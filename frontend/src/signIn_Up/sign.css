@@ -1,0 +1,280 @@
+body {
+    background-color: #FFBCBC;
+    /* background-color: #EDF3F9; */
+    margin: 0;
+    /* overflow: hidden; */
+}
+.main-outerr {
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    height:100vh    ;
+    flex-direction: row;
+    margin: 0;
+}
+.div_1 {
+    /* border: 1px solid yellow; */
+    width: 537px;
+    /* height: 100vh; */
+    background-color: #222;
+}
+.bg_img {
+    margin: -8px 0 0 -13px;
+    width: 550px;
+    height: calc(100vh + 8px);
+    opacity: 70%;
+}
+.h1_img {
+    position: relative;
+    width: 300px;
+    bottom: 540px;
+    left: 317px;
+    opacity: 950%;
+
+}
+.h2_img {
+    position: relative;
+    width: 251px;
+    bottom: 730px;
+    right: 80px;
+    opacity: 95%;
+}
+.div_2 {
+    background-color: #FFcdcd;
+    z-index: 1;
+    width: calc(100% - 537px);
+    box-shadow: inset 0 0 10px #F8485E;
+}
+.login {
+    background: #fff;
+    border-radius: 16px; 
+    width: 420px;
+    min-height: 500px;
+    margin: 50px auto;
+    padding: 10px;
+    box-shadow: 0 0 10px #ff9da9;
+}
+.goto_signup {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin: 10px 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+}
+
+.a_signin {
+    margin: 0 0 10px 5px;
+    color: red;
+    cursor: pointer;
+    font-weight: 900;
+    text-decoration: underline;
+}
+.login_heading {
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    /* font-family: 'Berkshire Swash', cursive; */
+    color: #F8485E;
+    margin: 40px 0 60px 0;
+}
+.inputbox {
+    padding: 10px;
+    width: 260px;
+    border-radius: 100px;
+    margin: 0 0 0 70px;
+    border: 1.4px solid #F8485E;
+    color: #333;
+    /* font-family: 'Josefin Sans', sans-serif; */
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+form > h4 {
+    margin: 20px 0 5px 80px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+}
+.login_bottom_flex{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 90px;
+}
+.login_bottom_flex > p, .su_bottom_flex >p{
+    color: #F8485E;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    width: auto;
+    font-weight: 900;
+    margin: 30px 0 0 0;
+    cursor: pointer;
+}
+.login_bottom_flex > button, .su_bottom_flex > button{
+    background-color: #F8485E;
+    border: 0;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: 'Quicksand', sans-serif;
+    margin: 20px 0 0 0;
+    border: 1.4px solid #F8485E;
+}
+.login_bottom_flex > button:hover, .su_bottom_flex >button:hover{
+    background-color: #fff;
+    color: #F8485E;
+    border: 1.4px solid #F8485E;
+}
+
+
+.signup_heading {
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    /* font-family: 'Berkshire Swash', cursive; */
+    color: #F8485E;
+    margin: 30px 0 10px;
+}
+.su_name_flex, .su_pass_flex{
+    display: flex;
+    justify-content: center;
+}
+.su_main > h4 {
+    margin: 15px 0 0 53px;
+}
+.su_main > input {
+    margin: 0 0 0 43px;
+    width: 315px;
+
+    padding: 8px;
+    border-radius: 100px;
+    border: 1.4px solid #F8485E;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+.su_name_flex > div, .su_pass_flex > div {
+    margin: 0 10px 0;
+}
+.su_h4 {
+    margin: 15px 0 0 6px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+}
+.su_inputbox {
+    width: 135px;
+
+    padding: 8px;
+    border-radius: 100px;
+    border: 1.4px solid #F8485E;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+.su_bottom_flex {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    body {
+        background-color: black;
+        overflow: visible;
+    }
+    .div_1 {
+        display: none;
+    }
+    .div_2 {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        box-shadow: 0 0 0;
+        background-image: url('../img/signIn_Up/bg-blur.jpg');
+        background-size: cover;
+    }
+    .login {
+        text-align: center;
+        background: transparent;
+        width: 80%;
+        box-shadow: 0 0 0;
+        border: 2px solid #B05B3B;
+    }
+    .a_signin {
+        color: #d79771
+    }
+    .goto_signup > span {
+        color: #B05B3B;
+        font-weight: 900;
+    }
+    .login_heading, .signup_heading  {
+        color: #B05B3B;
+    }
+    form > h4, .su_main > h4, .su_h4  {
+        margin: 20px 0 5px 0px;
+        color: #FFEBC9;
+        font-weight: 900;
+    }
+    .inputbox, .su_inputbox, .su_main > input  {
+        padding: 10px;
+        max-width: 70%;
+        border-radius: 100px;
+        margin: 0;
+        border: 0;
+        color: #582112;
+        background-color: #FFEBC9;
+    }
+    .login_bottom_flex{
+        flex-direction: column-reverse;
+        margin: 0;
+    }
+    .login_bottom_flex > button{
+        margin: 30px auto 0;
+        padding: 10px 17px;
+        font-size: 14px;
+        /* border: 1.4px solid #FFEBC9; */
+        color: #FFEBC9;
+        border: 1.4px solid #753422;
+        background-color: #753422;
+    }
+    .su_bottom_flex > button  {
+        margin: 30px auto 30px;
+        padding: 10px 17px;
+        font-size: 14px;
+        color: #FFEBC9;
+        border: 1.4px solid #753422;
+        background-color: #753422;
+    }
+    .login_bottom_flex > button:hover {
+        color: #753422;
+        border: 1.4px solid #753422;
+        background-color: #FFEBC9;
+    }
+    .su_bottom_flex > button:hover {
+        color: #753422;
+        border: 1.4px solid #753422;
+        background-color: #FFEBC9;
+    }
+    .login_bottom_flex > p, .su_pass_flex > p{
+        color: #D79771;
+        font-weight: 900; 
+    }
+
+    .su_main {
+        text-align: center;
+    }
+    .su_name_flex, .su_pass_flex{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .su_bottom_flex {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        margin: 0 0px;
+    }
+}

@@ -1,0 +1,36 @@
+/* Nav */
+nav{
+    font-family: 'Quicksand', sans-serif;
+    background-color: transparent;
+    height: 60px;
+    width: 100%;
+}
+label.logo{
+    color:#FFFFD2;
+    font-size: 2rem;
+    line-height: 4rem;
+    padding: 0 100px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin-right: 2rem;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 4rem;
+    margin: 0 0.5rem;
+}
+.Navsignup,.Navsignin{
+    text-decoration: none;
+    color: #FFFFD2;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+} 
+a.active,a:hover{
+    transition: 0.5s;
+    color: #F85F73;
+} 
+
+/*Responsiveness*/

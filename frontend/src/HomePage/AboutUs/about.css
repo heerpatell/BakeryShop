@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.about{
+    background-color:black;
+    height: 100%;
+    color:rgb(245, 155, 245)
+}
+.about-us{
+    margin: 4rem 0;
+}
+h1{
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.3rem;
+    color: violet;
+    padding-bottom: 0.8rem;
+}
+.about-title:after{
+    content: '';
+    background: blue;
+    display: block;
+    height: 0.2rem;
+    width: 7rem;
+    margin: 0.8rem auto;
+}
+.profile{
+    margin-top: 2rem;
+    text-transform: uppercase;
+}
+.profile .img-about{
+    /* opacity: 1; */
+    /* display: inline-block; */
+    position: relative;
+}
+.profile h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.profile h3{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.img-about:after{
+    content:'';
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+.img-about ul{
+    margin: 0;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    /* display: inline-block; */
+    left:50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+.img-about ul li{
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid #fff;
+    padding-top: 4px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.img-about a{
+    color: violet;
+}
+.img-about:hover::after{
+    opacity: 1;
+}
+.img-about:hover ul{
+    opacity: 1;
+}
+.img-about a:hover li{
+    color: salmon;
+    border: 1px solid violet;
+}
+.img-about::after , .img-about ul, .img-about ul li{
+    transition: all 0.5 ease-in-out 0s;
+}
