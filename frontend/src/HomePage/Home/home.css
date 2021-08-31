@@ -6,79 +6,177 @@
 body{
     list-style: none;
 }
-.App{   
-    background-image: url("/src/img/Home/bgHome.jpg");
+.landingHome{   
+    /* background-image: url("/src/img/Home/bgHome.jpg"); */
+    background-color: navy;
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
 }
+.serachAboveTagline{
+    font-size: 2rem;
+    color: #F85F73;   
+    margin-left: 21rem;
+    margin-top: 4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.HomeTag{
+    position: absolute;
+    left: 28rem;
+    top: 15rem;
+    color: white;
+    font-size: 8rem;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 9px;
+}
 /*Moving Images*/
 .imges{
-    margin-top: 50vh;
-    display: flex;
-    margin-left: 44rem;
-}
-.hand1{
-    position: relative;
-    bottom: 6rem;
-    width: 13rem;
-    right: 3rem;
-}
-.hand2{
-    width: 13rem;
-    position: relative;
-    bottom: 7.3rem;
-}
-/*second*/
-.secondpg{
-    display: flex;
     height: 100vh;
-    justify-content: center;
+    width: 98vw;
+    display: flex;
 }
-.left{
-    width: 100%;
-    background-color: #F875AA;
+.homeimg1{
+    position: relative;
+    width: 13rem;
+    bottom: 8rem;
+    left: 60rem;
 }
-.card-left{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    height: 30rem;
+.homeimg2{
+    width: 13rem;
+    position: relative;
+    right: 0rem;
 }
-.card-right{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    height: 30rem;
+/*Second Page*/
+.hsecond{
+    display: flex;
 }
-.right{
-    z-index: 1;
-    width: 100%;
-    background-color: #95E1D3;
+.h-leftBox{
+    width: 50%;
 }
-.content{
-    padding:0.7rem;
-    margin: 3rem 5rem;
-    background-color:#fff;
-    height: 50%;
+.h-rightBox{
+    width: 50%;
+
+}
+.h-leftOuter{
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    background-color: oldlace;
+    width: 38%;
+    height: 60%;
+    border-radius: 18px;
+    transform: rotate(10deg); 
+}
+.h-leftInner{
+    position: absolute;
+    border-radius: 18px;
+    top:20%;
+    left: 8%;
+    background-color: #F85F73;
+    color: #fff;
     text-align: center;
-    border-radius: 1rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    width: 38%;
+    height: 60%;
 }
-.points{
-    margin: 2rem 7rem;
-    text-align: justify;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', Verdana, sans-serif;
+.h-rightOuter{
+    position: absolute;
+    top: 20%;
+    right: 8%;
+    background-color: oldlace;
+    width: 38%;
+    height: 60%;
+    border-radius: 18px;
+    transform: rotate(10deg); 
 }
-.points ol li{
-    margin-top: 0.8rem;
-    line-height: 1rem;
+.h-rightInner{
+    position: absolute;
+    border-radius: 18px;
+    top:20%;
+    right: 8%;
+    background-color: #F85F73;
+    color: #fff;
+    text-align: center;
+    width: 38%;
+    height: 60%;
 }
-.hcardt{
-    color: #2978B5;
+.h-leftBox,.h-rightBox h4{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-ol li{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: #F14668;
+.hdetail{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-around;
+    align-items:center
 }
-/* .cardImg{
-    height: 40%;
-} */
+.hmoredetail{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.hno{
+    border: 1px solid white;
+    border-radius: 5rem;
+    width: 30px;
+    margin-left: 2rem;
+}
+.hmoredetail p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 1rem;
+    color: #283C63;
+    font-weight:600;
+}
+
+
+
+
+
+
+
+
+
 /*Nav Responsive*/
+
+
+/*Second Responsive*/
+
+
+/* @media only screen and (max-width: 768px){
+    .hleft, .hright{
+        position: relative;
+    }
+    .hdetail{
+        display: flex;
+        flex-direction: column;
+    }
+    .hmoredetail img{
+        width: 70px;
+    }
+    .hmoredetail{
+        margin-top: 2rem;
+    }
+    .hno{
+        align-items: center;
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .hsecond{
+        display: flex;
+        background-color: #FBE8D3;
+        flex-direction: row;
+    }
+    .hleft,.hright{
+        position: relative;
+    }
+    .hdetail{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .hmoredetail img{
+        width: 60px;
+    }
+    
+} */

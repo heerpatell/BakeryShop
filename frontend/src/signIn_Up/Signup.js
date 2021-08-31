@@ -66,7 +66,7 @@ function Signup() {
             <div id="login" className="login">
                 <div className="goto_signup" onMouseOver={mouseOver}>
                     <span>Already a member? <Link to="signin" className="a_signin">Sign In</Link></span>
-                    <a className="a_signin" src="">Sign Up as Baker</a>
+                    <a className="a_signin" href="/">Sign Up as Baker</a>
                 </div>
                 <h1 className="signup_heading" onMouseOver={mouseOver}>Sign Up</h1>
                 <form>

@@ -1,14 +1,14 @@
 document.addEventListener("mousemove",per1)
 
 function per1(e) {
-this.querySelectorAll('.hand1').forEach(item => {
+this.querySelectorAll('.homeimg1').forEach(item => {
     const x = (window.innerWidth - e.pageX * 2) / 25;
     const y = (window.innerHeight - e.pageY * 2) / 25;
                 
     item.style.transform = `translateX(${x}px) translateY(${y}px)`;
     })
 
-    this.querySelectorAll('.hand2').forEach(item => {
+    this.querySelectorAll('.homeimg2').forEach(item => {
         var a = (window.innerWidth - e.pageX * 2) / 25;
         var b = (window.innerHeight - e.pageY * 2) / 25;
         
