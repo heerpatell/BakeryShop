@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs")
 const signSchema = new mongoose.Schema({
     name:{
         type:String,
-        require:true,
+        required:true,
     },
     uname:{
         type:String,
@@ -14,15 +14,14 @@ const signSchema = new mongoose.Schema({
     email:{
         type:String,
         unique:true,
-        require:true
+        required:true
     },
     pswd:{
         type:String,
-        require:true
+        required:true
     },
     stoken:{
-        type:String,
-        possibleValues: ["I'm Customer","I'm Baker"]
+        type:String,      
     },
 })
 

@@ -7,6 +7,7 @@ function Signup() {
     const [user,setUser]=useState({
         name:"",uname:"",email:"",pswd:"",stoken:"",scheck:""
     })
+
     const handleInp = (e) =>{
         const {name,value} = e.target;
         setUser({...user,[name]:value});
@@ -80,24 +81,19 @@ function Signup() {
                         <div className="upRow ">
                             <input type="radio" 
                             className="checkSignUp" 
-                            name="stoken"  
-                            value={user.stoken}></input>Customer
+                            name="stoken" 
+                            value={user.stoken}></input><span>Customer</span>
                         </div>
                         <div className="upRow ">
                             <input type="radio" 
                             className="checkSignUp" 
                             name="stoken" 
-                            value={user.stoken}></input>Baker
+                            value={user.stoken}></input><span>Baker</span>
                         </div>
                     </div>   
                 </div>
+                <br/>
                 <div className="upRow">
-                    <input type="checkbox"
-                    id="signCheck" 
-                    className="checkSignUp" 
-                    name="scheck" 
-                    value={user.scheck}
-                    onChange={handleInp}></input>
                     <label for="signCheck" >Creating an account means you’re okay with our Terms of Service, Privacy Policy.     </label>
                 </div>
                 

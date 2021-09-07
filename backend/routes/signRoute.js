@@ -20,6 +20,7 @@ router.route('/register').post(async(req,res)=>{
         stoken,
         scheck
     })
+    console.log(newUser)
     //pswd hash(middleware)
     
     const reg = await newUser.save()
@@ -31,6 +32,7 @@ router.route('/register').post(async(req,res)=>{
 })
 router.route('/signin').post(async(req,res)=>{
     try{
+        
         const email = req.body.email;
         const pswd = req.body.pswd;
 

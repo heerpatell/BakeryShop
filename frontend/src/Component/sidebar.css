@@ -1,9 +1,9 @@
 .sideNav{
     background: #B61919;
-    width: 21   0px;
+    width: 210px;
     position: absolute;
     padding: 0 30px;
-    height: 100vh;
+    height: 100%;
     left: -100%;
     transition: all 0.5s;
 }
