@@ -6,7 +6,7 @@ nav{
     width: 100%;
 }
 label.logo{
-    color:#FFFFD2;
+    color:#012443;
     font-size: 2rem;
     line-height: 4rem;
     padding: 0 100px;
@@ -21,16 +21,32 @@ nav ul li{
     line-height: 4rem;
     margin: 0 0.5rem;
 }
-.Navsignup,.Navsignin{
+.Navsignin{
     text-decoration: none;
-    color: #FFFFD2;
+    width: 30px;
+    height: fit-content;
+    color: #FDD2BF;
+    background-color: #B61919;
+    font-size: 1rem;
+    border-radius: 9px;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.Navsignup{
+    text-decoration: none;
+    color: #012443;
     font-size: 1rem;
     padding: 0.5rem 1rem;
     text-transform: uppercase;
 } 
-a.active,a:hover{
+a.active,.Navsignup:hover{
     transition: 0.5s;
-    color: #F85F73;
+    color: #B61919;
 } 
+.Navsignin:hover{
+    color: #B61919;
+    background-color: #FDD2BF;
+}
 
 /*Responsiveness*/

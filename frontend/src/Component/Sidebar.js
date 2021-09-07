@@ -16,10 +16,10 @@ function Sidebar({show}) {
     <div className={show ? 'sideNav active' : 'sideNav'}>
     <ul className="baker-list">
         <li className="baker-list-item"><Link to="/baker" className="baker-list-link"><FaHome/>  Home</Link></li>
-        <li className="baker-list-item"><Link to="#" className="baker-list-link"><CgProfile/>  Profile</Link></li>
+        <li className="baker-list-item"><Link to="/baker/profile" className="baker-list-link"><CgProfile/>  Profile</Link></li>
         <li className="baker-list-item"><Link to="/baker/product" className="baker-list-link"><GiCakeSlice/>  Products</Link></li>
-        <li className="baker-list-item"><Link to="#" className="baker-list-link"><BiReceipt/>  Recent order</Link></li>
-        <li className="baker-list-item"><Link to="#" className="baker-list-link"><RiHistoryLine/>  Order history</Link></li>
+        <li className="baker-list-item"><Link to="/baker/recentorder" className="baker-list-link"><BiReceipt/>  Recent order</Link></li>
+        <li className="baker-list-item"><Link to="/baker/orderhistory" className="baker-list-link"><RiHistoryLine/>  Order history</Link></li>
         <li className="baker-list-item"><Link to="#" className="baker-list-link"><FiLogOut/>  Log out</Link></li>
     </ul>
     </div>

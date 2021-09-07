@@ -12,10 +12,11 @@ mongoose.connect("mongodb+srv://heer:heer123@cluster0.njtdf.mongodb.net/Bakery",
     useNewUrlParser:true,
     useUnifiedTopology:true
 })  
-
+const signuproute = require("./routes/signRoute")
 const contactroute = require("./routes/contactRoute");
 
 app.use("/contactapi",contactroute);    //contact route
+app.use("/auth",signuproute);    //signup route
 
 app.listen(5000,(req,res)=>{
     console.log("listenig on port")

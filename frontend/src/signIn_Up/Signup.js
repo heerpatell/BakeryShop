@@ -1,116 +1,111 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import './sign.css'
-import SignLeft from '../Component/SignLeft'
+import axios from 'axios'
 
 function Signup() {
-
-    var flg = 0;
-    function mouseOver() {
-        if(flg){
-            glassDistant();
-        }
-        else {
-            glassClose();
-        }
-        flg = flg === 1 ? 0 : 1;
+    const [user,setUser]=useState({
+        name:"",uname:"",email:"",pswd:"",stoken:"",scheck:""
+    })
+    const handleInp = (e) =>{
+        const {name,value} = e.target;
+        setUser({...user,[name]:value});
     }
-    function glassClose() {
-
-        var styleElement = document.createElement('style');
-        styleElement.innerHTML = `
-            .h1_img {
-                transition: .5s;
-                transition-timing-function: cubic-bezier(.6,-0.28,.74,.05);
-                left: 237px;
-            }
-
-            .h2_img {
-                transition: .5s;
-                transition-timing-function: cubic-bezier(.6,-0.28,.74,.05);
-                right: 0;
-            }
-        `;
-        var bodyElement = document.querySelector('body');
-        bodyElement.appendChild(styleElement);
-        
-    }
-
-    function glassDistant() {
-
-        var styleElement = document.createElement('style');
-        styleElement.innerHTML = `
-            .h1_img {
-                transition: .5s;
-                transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); 
-                left: 317px;
-            }
-
-            .h2_img {
-                transition: .5s;
-                transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); 
-                right: 80px;
-            }
-        `;
-        var bodyElement = document.querySelector('body');
-        bodyElement.appendChild(styleElement);
-        
+    const signData =async (e) =>{
+        e.preventDefault(); //prevents automatic reload
+        const newContact= {
+            name:user.name,
+            uname:user.uname,
+            email:user.email,
+            pswd:user.pswd,
+            stoken:user.stoken,
+            scheck:user.scheck
+        }
+        axios.post('http://localhost:5000/auth/register',newContact)
     }
 
     return (
     <>
-    <div className="main-outerr" id="div_1">
-       <SignLeft/>
-        <div className="div_2" id="div_2" >
-            
-            <div id="login" className="login">
-                <div className="goto_signup" onMouseOver={mouseOver}>
-                    <span>Already a member? <Link to="signin" className="a_signin">Sign In</Link></span>
-                    <a className="a_signin" href="/">Sign Up as Baker</a>
+    <div className="sign_main">
+        <div className="sign_left"></div>
+
+        <div className="sign_right">
+            <div className="switchSign">Don't have an account? <span className="SignSpan"><Link to="/signin">Sign In</Link></span></div>
+            <h3 className="headdTagUp">Sign up</h3>
+            <form method="post" action="/signup"> 
+                <div className="upRow">
+                    <div className="upCol">
+                        <label className="inLabel">Name </label>
+                        <input type="email"
+                        placeholder="Name" 
+                        className="upInpR" 
+                        name="name" 
+                        value={user.name}
+                        onChange={handleInp}></input>
+                    </div>   
+                    <div className="upCol">   
+                        <label className="inLabel">Username </label>
+                        <input type="email" 
+                        placeholder ="Username" 
+                        className="upInpR" 
+                        name="uname" 
+                        value={user.uname}
+                        onChange={handleInp}></input>
+                    </div>    
+                </div>   
+                <div className="upRow">
+                    <div className="upCol">
+                        <label className="inLabel">Email </label>
+                        <input type="email" 
+                        placeholder="Email" 
+                        className="upInp"
+                        name="email" 
+                        value={user.email}
+                        onChange={handleInp}></input>   
+                    </div>
+                </div>        
+                <div className="upRow">
+                    <div className="upCol">
+                        <label className="inLabel">Password </label>
+                        <input type="password" 
+                        placeholder="Password"
+                        className="upInp" 
+                        name="pswd" 
+                        value={user.pswd}
+                        onChange={handleInp}></input>
+                    </div>
                 </div>
-                <h1 className="signup_heading" onMouseOver={mouseOver}>Sign Up</h1>
-                <form>
-                   
-                    <div className="su_main">
-                        <div className="su_name_flex">
-                            <div onMouseOver={mouseOver}>
-                                <h4 className="su_h4">First name:</h4>
-                                <input className="su_inputbox" type="text" placeholder="Name" />
-                            </div>
-                            <div onMouseOver={mouseOver}>
-                                <h4 className="su_h4">Last name:</h4>
-                                <input className="su_inputbox" type="text" placeholder="Surname" />
-                            </div>
+                <div className="upCol">
+                    <div onChange={handleInp}>
+                        <div className="upRow ">
+                            <input type="radio" 
+                            className="checkSignUp" 
+                            name="stoken"  
+                            value={user.stoken}></input>Customer
                         </div>
-
-                        <h4 className="su_h4" onMouseOver={mouseOver}>Create Username:</h4>
-                        <input type="text" placeholder="Username" onMouseOver={mouseOver} />
-
-                        <h4 className="su_h4" onMouseOver={mouseOver}>Enter Email:</h4>
-                        <input type="text" placeholder="Email" onMouseOver={mouseOver} />
-
-                        <div className="su_pass_flex">
-                            <div onMouseOver={mouseOver}>
-                                <h4 className="su_h4">Create Password:</h4>
-                                <input className="su_inputbox" type="password" placeholder="Password" />
-                            </div>
-                            <div onMouseOver={mouseOver}>
-                                <h4 className="su_h4">Confirm Password:</h4>
-                                <input className="su_inputbox" type="password" placeholder="Password" />
-                            </div> 
+                        <div className="upRow ">
+                            <input type="radio" 
+                            className="checkSignUp" 
+                            name="stoken" 
+                            value={user.stoken}></input>Baker
                         </div>
-                    </div>
-                    <div className="su_bottom_flex">
-                        <p onMouseOver={mouseOver}>
-                        <input type="checkbox" /><span href="">I Agree Term and Conditions</span></p>
-                        <button onMouseOver={mouseOver}>Sign Up</button>
-                    </div>
-                </form>
-            </div>
+                    </div>   
+                </div>
+                <div className="upRow">
+                    <input type="checkbox"
+                    id="signCheck" 
+                    className="checkSignUp" 
+                    name="scheck" 
+                    value={user.scheck}
+                    onChange={handleInp}></input>
+                    <label for="signCheck" >Creating an account means you’re okay with our Terms of Service, Privacy Policy.     </label>
+                </div>
+                
+            </form>
+            <button type="submit" className="sBtn" onClick={signData}>Sign up</button>
         </div>
-
+    
     </div>
-    <script src="sign_script.js"></script>
     </>
     )
 }

@@ -3,9 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-.about{
-    background-color:black;
+body{
+    background-image: url('../../img/about/aboutBg.png');
     height: 100%;
+    width: 100%;
+}
+.about{
     color:rgb(245, 155, 245)
 }
 .about-us{

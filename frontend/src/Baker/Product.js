@@ -58,7 +58,7 @@ const styles = (theme) => ({
 
 function Product() {
     const [open, setOpen] = useState(false);
-    const [showNav,setShowNav] = useState(false);
+    const [showNav,setShowNav] = useState(true);
     const [input, setInput] = useState({
       name:'',
       color:'#ffffff'
@@ -97,9 +97,9 @@ function Product() {
 
     return (
     <>
-    <header className="bakerHeader">
+    {/* <header className="bakerHeader">
         <GiHamburgerMenu size={30} onClick={displayNav}/>
-    </header>
+    </header> */}
     <Sidebar  show={showNav}/>
    
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>

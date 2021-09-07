@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-image: url('/src/img/Baker/Bproduct.png');
+}
 .bakerProductList{
     display: flex;
     flex-direction: row;
@@ -11,13 +14,13 @@
     display: grid;
 }
 .bakerAddProduct{
-    margin-left: 11rem;
+    margin-left: 15rem;
     margin-top: 2rem;
     height: 12rem;
     width: 12rem;
     border-radius: 5px;
 }
 .addCategory h4{
-    margin-left: 11.5rem;
+    margin-left: 16.2rem;
     margin-top: 0.4rem;
 }

@@ -8,9 +8,11 @@ import About from './HomePage/AboutUs/About'
 import Bhome from './Baker/Bhome'
 import Product from './Baker/Product'
 import AdminContact from './Admin/AdminContact'
+import Bprofile from './Baker/Bprofile'
+import OrderHis from './Baker/OrderHis';
+import ReceOrder from './Baker/ReceOrder';
 
 function App() {
-
   return (
     <div className="App">
     <Switch>
@@ -18,8 +20,11 @@ function App() {
         <Route excat path='/signup' component={SignUp}></Route>
         <Route path='/contact' component={Contact}></Route>
         <Route path='/about' component={About}></Route>
-        <Route path="/baker/product" component={Product}></Route>
-        <Route path="/baker" component={Bhome}></Route>
+        <Route excat path="/baker/profile" component={Bprofile}></Route>
+        <Route excat path="/baker/product" component={Product}></Route>
+        <Route excat path="/baker/recentorder" component={ReceOrder}></Route>
+        <Route excat path="/baker/orderhistory" component={OrderHis}></Route>
+        <Route excat path="/baker" component={Bhome}></Route>
         <Route path="/admincontact" component={AdminContact}></Route>
         <Route excat path='/' component={Home}></Route>
     </Switch>

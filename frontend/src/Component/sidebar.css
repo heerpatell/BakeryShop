@@ -1,9 +1,9 @@
 .sideNav{
-    background: darkblue;
+    background: #B61919;
     width: 21   0px;
     position: absolute;
     padding: 0 30px;
-    height: 92vh;
+    height: 100vh;
     left: -100%;
     transition: all 0.5s;
 }
@@ -18,7 +18,7 @@
     margin: 10px 0;;
 }
 .baker-list-link{
-    color: cornsilk;
+    color: #FDD2BF;
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -27,5 +27,6 @@
 }
 .baker-list-link:hover,
 .baker-list-link.active{
-    background: gray;
+    background: #FDD2BF;
+    color: #B61919;
 }

@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 .contactDiv{
-    background-image: url('../../img/contact/bg.jpg');
+    background-image: url('../../img/contact/bgContact.png');
     background-size:auto;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height: 100%;
 }
 .outer-part{

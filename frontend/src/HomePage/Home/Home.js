@@ -32,10 +32,16 @@ function Home() {
                     <div>
                         <img src={bluecc} alt="img2" data-speed="3" className="homeimg2 img"></img>
                     </div>
+                    <div>
+                        <img src={yellowcc} alt="img1" data-speed="-3" className="homeimg3 img"></img>
+                    </div>
+                    <div>
+                        <img src={bluecc} alt="img1" data-speed="-3" className="homeimg4 img"></img>
+                    </div>
                 </div>  
             </div>
             <section className="hsecond">
-                <Parallax bgImage={bgHome} strength={300} blur={3}>
+                <Parallax bgImage={bgHome} strength={600} blur='3'>
                 <div style={{height:'100vh',width:'100vw'}}>
                     <div className="h-leftBox">
                         <div className="h-leftOuter"></div>

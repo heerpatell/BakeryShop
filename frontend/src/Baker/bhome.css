@@ -3,8 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-.bakerHome{
-    background-color: cornsilk ;
+body{
+    background-image: url('/src/img/Baker/Bproduct.png');
+    background-repeat: repeat;
 }
 .bakerHeader{
     padding-left: 1.5rem;

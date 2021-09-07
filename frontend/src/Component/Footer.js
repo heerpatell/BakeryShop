@@ -10,12 +10,12 @@ import {FiMail} from 'react-icons/fi'
 import {Link} from 'react-router-dom'
 
 
-let footerIcon={ margin:"40px 5px" , color:'#F85F73'}
+let footerIcon={ margin:"20px 5px" , color:'#B61919'}
 function  Footer() {
     return(
         <>
         <footer className="text-center text-lg-start footerBg ">
-            <section className="social d-flex justify-content-lg-between border-bottom container ">
+            <section className="social d-flex justify-content-lg-between border-bottom border-dark container ">
                 <div className="container d-flex justify-content-center text-md-start">
                     <a href="#"><FiFacebook size={30} style={footerIcon}/></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#"><FaInstagram size={30} style={footerIcon}/></a>&nbsp;&nbsp;&nbsp;&nbsp;
