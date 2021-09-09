@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import './sign.css'
 import axios from 'axios'
 
 function SignIn() {
+    let history = useHistory()
+
     const [user,setUser] = useState({
         email:"",pswd:""
     })
@@ -20,6 +22,21 @@ function SignIn() {
         axios.post('http://localhost:5000/auth/signin',userData)
         .then(res => {
             alert(res.data.message)
+
+            try{
+                if(res.data.message==='Login succesfully'){
+                    console.log("inside")
+                    if(res.data.userToken==='Customer'){
+                        history.push('/baker')
+                    }else if(res.data.userToken==="Baker"){
+                        history.push('/contact')
+                    }
+                }else{
+                    history.push('/signin')
+                }
+            }catch(e){
+                console.log("error",e)
+            }
         })
     } 
     return (

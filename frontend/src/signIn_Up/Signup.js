@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import './sign.css'
 import axios from 'axios'
 
 function Signup() {
+    let history = useHistory()
     const [user,setUser]=useState({
-        name:"",uname:"",email:"",pswd:"",stoken:"",scheck:""
+        name:"",uname:"",email:"",pswd:"",stoken:"Customer",scheck:""
     })
 
     const handleInp = (e) =>{
@@ -23,6 +24,12 @@ function Signup() {
             scheck:user.scheck
         }
         axios.post('http://localhost:5000/auth/register',newContact)
+        .then(res=>{
+            alert(res.data.message)
+            if(res.data.message==='Registered succesfully'){
+                history.push('/signin')
+            }
+        })
     }
 
     return (
@@ -37,7 +44,7 @@ function Signup() {
                 <div className="upRow">
                     <div className="upCol">
                         <label className="inLabel">Name </label>
-                        <input type="email"
+                        <input type="text"
                         placeholder="Name" 
                         className="upInpR" 
                         name="name" 
@@ -46,7 +53,7 @@ function Signup() {
                     </div>   
                     <div className="upCol">   
                         <label className="inLabel">Username </label>
-                        <input type="email" 
+                        <input type="text" 
                         placeholder ="Username" 
                         className="upInpR" 
                         name="uname" 
@@ -76,7 +83,7 @@ function Signup() {
                         onChange={handleInp}></input>
                     </div>
                 </div>
-                <div className="upCol">
+                {/* <div className="upCol">
                     <div onChange={handleInp}>
                         <div className="upRow ">
                             <input type="radio" 
@@ -91,7 +98,7 @@ function Signup() {
                             value={user.stoken}></input><span>Baker</span>
                         </div>
                     </div>   
-                </div>
+                </div> */}
                 <br/>
                 <div className="upRow">
                     <label for="signCheck" >Creating an account means you’re okay with our Terms of Service, Privacy Policy.     </label>
