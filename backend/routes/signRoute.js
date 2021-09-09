@@ -81,4 +81,10 @@ router.route('/signin').post(async(req,res)=>{
     }
 })
 
+router.route('/logout').get(async(req,res)=>{
+    console.log("logout")
+    res.clearCookie('jwtoken',{path : '/'})
+    res.status(200).send({message:"user logout"})
+})
+
 module.exports = router;
