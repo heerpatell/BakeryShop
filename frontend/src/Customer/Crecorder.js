@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import SidebarCustomer from '../Component/SidebarCustomer'
 
-function Chome() {
+function Crecorder() {
     const [showNav,setShowNav]= useState(true)
     return (
     <>
@@ -13,4 +13,4 @@ function Chome() {
     )
 }
 
-export default Chome
+export default Crecorder

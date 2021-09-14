@@ -5,7 +5,7 @@ function AdminContact() {
     const [contact,setContact] = useState([])
 
     const getContact = async() =>{
-        const response = await fetch('http://localhost:5000/contactapi/get');
+        const response = await fetch('http://localhost:5001/contactapi/get');
             
         setContact(await response.json())
     }

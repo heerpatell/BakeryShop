@@ -62,7 +62,7 @@ function Product() {
       name:'',
       color:'#B61919'
     })
-    const [catlist,setCatList]=useState([])
+    const [catlist,setCatList]=useState(["a"])
 
     var catNum=1;
 
@@ -149,7 +149,7 @@ function Product() {
               <div className="bakerProductList">
                 <div className={catNum%4==0 ? 'bakerAddProduct' : 'bakerAddProductRest'} style={{backgroundColor: "#B61919"}} >
                 <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem', color:"#FDD2BF" }}>
-                    <h4>{item.name}</h4>
+                    <h4 className="catName">{item.name}</h4>
                 </div>
                 <div className="disHandle">{catNum+=1}</div>
                 </div>   

@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import SidebarCustomer from '../Component/SidebarCustomer'
+import './cprofile.css'
 
-function Chome() {
+function Cordhistory() {
     const [showNav,setShowNav]= useState(true)
     return (
     <>
@@ -13,4 +14,4 @@ function Chome() {
     )
 }
 
-export default Chome
+export default Cordhistory

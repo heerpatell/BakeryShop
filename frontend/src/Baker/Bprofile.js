@@ -163,7 +163,7 @@ function Bprofile() {
 
             <div className="proRow">
             <div className="proCol">
-                    <label className="proLab">Contact</label><br/>
+                    <label className="proLab">Contact*</label><br/>
                     <input type="text"
                     className="proIn"
                     name="cont"
