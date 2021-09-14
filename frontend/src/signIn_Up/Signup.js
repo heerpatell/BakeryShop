@@ -23,7 +23,7 @@ function Signup() {
             stoken:user.stoken,
             scheck:user.scheck
         }
-        axios.post('http://localhost:5000/auth/register',newContact)
+        axios.post('http://localhost:5001/auth/register',newContact)
         .then(res=>{
             alert(res.data.message)
             if(res.data.message==='Registered succesfully'){

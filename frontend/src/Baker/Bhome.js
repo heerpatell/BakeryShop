@@ -19,7 +19,7 @@ function Bhome() {
         </header> */}
         
         {/* <Sidebar show={showNav}/>  */}
-        <Sidebar show={showNav}/>
+        <Sidebar show={showNav} />
     </div>
     </>
     )

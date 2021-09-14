@@ -11,6 +11,7 @@ import AdminContact from './Admin/AdminContact'
 import Bprofile from './Baker/Bprofile'
 import OrderHis from './Baker/OrderHis';
 import ReceOrder from './Baker/ReceOrder';
+import Chome from './Customer/Chome';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route excat path="/baker/recentorder" component={ReceOrder}></Route>
         <Route excat path="/baker/orderhistory" component={OrderHis}></Route>
         <Route excat path="/baker" component={Bhome}></Route>
+        <Route excat path="/customer" component={Chome}></Route>
         <Route path="/admincontact" component={AdminContact}></Route>
         <Route excat path='/' component={Home}></Route>
     </Switch>

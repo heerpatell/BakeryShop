@@ -4,7 +4,6 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import {VscAdd} from 'react-icons/vsc'
 import {AiOutlineClose} from 'react-icons/ai'
 import './product.css'
-
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -61,10 +60,11 @@ function Product() {
     const [showNav,setShowNav] = useState(true);
     const [input, setInput] = useState({
       name:'',
-      color:'#ffffff'
+      color:'#B61919'
     })
     const [catlist,setCatList]=useState([])
 
+    var catNum=1;
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -75,7 +75,7 @@ function Product() {
 
     var displayNav = ()=>{
         setShowNav(!showNav)
-    }
+    } 
    
     const handleChange = (e) =>{
       const {name,value} = e.target;
@@ -100,7 +100,7 @@ function Product() {
     {/* <header className="bakerHeader">
         <GiHamburgerMenu size={30} onClick={displayNav}/>
     </header> */}
-    <Sidebar  show={showNav}/>
+    <Sidebar  show={showNav} />
    
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
@@ -113,10 +113,10 @@ function Product() {
             <input type="text"value={input.name} onChange={handleChange} name="name"/>
           </Typography>
 
-          <Typography gutterBottom>
+          {/* <Typography gutterBottom>
             <label>Background Color </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="color" value={input.color} onChange={handleChange} name="color"/>
-          </Typography>
+          </Typography> */}
 
         </DialogContent>
         
@@ -131,15 +131,13 @@ function Product() {
       <div className="bakerProductList">
         
         <div className="categorymain">
-          <div className="bakerAddProduct" style={{backgroundColor: "#FF0000"}}  onClick={handleClickOpen}>
-              <VscAdd size={50} style={{marginLeft:"4.5rem",marginTop:"4.5rem"}}/>
+          <div className="bakerAddProduct" style={{backgroundColor: "#B61919"}}  onClick={handleClickOpen}>
+              <VscAdd size={50} style={{marginLeft:"4.5rem",marginTop:"4.5rem",color:"#FDD2BF"}}/>
           </div>  
           <div className="addCategory">
               <h4>Add catageory</h4>
           </div>  
         </div>
-
-      </div>
 
         {
             catlist.map((item,ind)=>{
@@ -148,17 +146,20 @@ function Product() {
               //     Name  : {item.name}<br/>
               //     Color : {item.color} 
               // </div>
-              <div className="categorymain">
-                <div className="bakerAddProduct" style={{backgroundColor: item.color}} >
-                <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem'}}>
+              <div className="bakerProductList">
+                <div className={catNum%4==0 ? 'bakerAddProduct' : 'bakerAddProductRest'} style={{backgroundColor: "#B61919"}} >
+                <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem', color:"#FDD2BF" }}>
                     <h4>{item.name}</h4>
                 </div>
+                <div className="disHandle">{catNum+=1}</div>
                 </div>   
               </div>
               )
             })
         }
 
+
+      </div>
 
     </>
     )

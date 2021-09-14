@@ -32,7 +32,7 @@ function Contact() {
             sub:input.sub,
             msg:input.msg
         }
-        axios.post('http://localhost:5000/contactapi/create',newContact)
+        axios.post('http://localhost:5001/contactapi/create',newContact)
     }
 
     return (

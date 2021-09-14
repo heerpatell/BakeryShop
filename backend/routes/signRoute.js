@@ -4,7 +4,6 @@ const Register = require("../models/signupModel")
 const bcrypt = require('bcryptjs')
 const {check,validationResult} = require("express-validator")
 
-var db;
 
 router.route('/register').post([
     check('name','Error occured in name').trim().isEmpty().isLength({min:1}),

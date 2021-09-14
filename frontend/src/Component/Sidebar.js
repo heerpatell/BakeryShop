@@ -16,7 +16,7 @@ function Sidebar({show}) {
 
     const logOutClicked = () =>{
         console.log("clicked")
-        axios.get("http://localhost:5000/auth/logout")
+        axios.get("http://localhost:5001/auth/logout")
         .then(res=>{
             history.push('/signin',{
                 replace:true
@@ -34,13 +34,13 @@ function Sidebar({show}) {
     return (
     <>
     <div className={show ? 'sideNav active' : 'sideNav'}>
-    <ul className="baker-list">
-        <li className="baker-list-item"><Link to="/baker" className="baker-list-link"><FaHome/>  Home</Link></li>
-        <li className="baker-list-item"><Link to="/baker/profile" className="baker-list-link"><CgProfile/>  Profile</Link></li>
-        <li className="baker-list-item"><Link to="/baker/product" className="baker-list-link"><GiCakeSlice/>  Products</Link></li>
-        <li className="baker-list-item"><Link to="/baker/recentorder" className="baker-list-link"><BiReceipt/>  Recent order</Link></li>
-        <li className="baker-list-item"><Link to="/baker/orderhistory" className="baker-list-link"><RiHistoryLine/>  Order history</Link></li>
-        <li className="baker-list-item"><Link onClick={logOutClicked} className="baker-list-link"><FiLogOut/>  Log out</Link></li>
+    <ul className="baker-list"> 
+        <li className="baker-list-item"><Link to="/baker" className="baker-list-link"><FaHome/> Home</Link></li>
+        <li className="baker-list-item"><Link to="/baker/profile" className="baker-list-link"><CgProfile/> Profile</Link></li>
+        <li className="baker-list-item"><Link to="/baker/product" className="baker-list-link"><GiCakeSlice/>  Product</Link></li>
+        <li className="baker-list-item"><Link to="/baker/recentorder" className="baker-list-link"><BiReceipt/>Recent Order</Link></li>
+        <li className="baker-list-item"><Link to="/baker/orderhistory" className="baker-list-link"><RiHistoryLine/>Order History</Link></li>
+        <li className="baker-list-item"><Link onClick={logOutClicked} className="baker-list-link"><FiLogOut/>Log out</Link></li>
     </ul>
     </div>
     </>

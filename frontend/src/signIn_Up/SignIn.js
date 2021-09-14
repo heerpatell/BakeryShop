@@ -19,7 +19,7 @@ function SignIn() {
             email:user.email,
             pswd:user.pswd
         }
-        axios.post('http://localhost:5000/auth/signin',userData)
+        axios.post('http://localhost:5001/auth/signin',userData)
         .then(res => {
             alert(res.data.message)
 
@@ -27,9 +27,9 @@ function SignIn() {
                 if(res.data.message==='Login succesfully'){
                     console.log("inside")
                     if(res.data.userToken==='Customer'){
-                        history.push('/baker')
+                        history.push('/customer')
                     }else if(res.data.userToken==="Baker"){
-                        history.push('/contact')
+                        history.push('/baker')
                     }
                 }else{
                     history.push('/signin')

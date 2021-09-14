@@ -1,7 +1,7 @@
 .sideNav{
     background: #B61919;
     width: 210px;
-    position: absolute;
+    position: fixed;
     padding: 0 30px;
     height: 100%;
     left: -100%;
