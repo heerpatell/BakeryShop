@@ -30,6 +30,8 @@ function SignIn() {
                         history.push('/customer')
                     }else if(res.data.userToken==="Baker"){
                         history.push('/baker')
+                    }else if(res.data.userToken==="Admin"){
+                        history.push('/adminbakercontact')
                     }
                 }else{
                     history.push('/signin')

@@ -4,6 +4,7 @@ const cors = require('cors')
 
 const signuproute = require("./routes/signRoute")
 const contactroute = require("./routes/contactRoute")
+const adminroute = require('./routes/adminRoute')
 //const bakerroute = require("./routes/bakerRoute")
 
 const app = express()
@@ -17,6 +18,7 @@ mongoose.connect("mongodb+srv://heer:heer123@cluster0.njtdf.mongodb.net/Bakery",
     useUnifiedTopology:true
 })  
 
+app.use("/admin",adminroute)   //admin route
 app.use("/contactapi",contactroute);    //contact route
 app.use("/auth",signuproute);    //signup route
 //app.use("/baker",bakerroute)

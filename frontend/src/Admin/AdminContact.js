@@ -1,7 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import './adminContact.css'
+import Adsidebar from '../Component/Adsidebar'
+
 
 function AdminContact() {
+    const [showNav,setShowNav]= useState(true)
     const [contact,setContact] = useState([])
 
     const getContact = async() =>{
@@ -17,6 +20,7 @@ function AdminContact() {
     return (
     <>
     <div className="adminHome">
+    <Adsidebar show={showNav}/>
     <div className="contactHead">Contact Detail</div>
     {(contact.length===0) && (<div className='noDataContact'>Oops! No Contact details has arrived!</div>)}
 

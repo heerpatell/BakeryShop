@@ -3,12 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-image: url('/src/img/Baker/Bproduct.png');
+}
 .adminHome{
-    background-color: antiquewhite;
     height: 100vh;
 }
 .contactHead{
-    text-align: center;
+    margin-left: 17rem;
+    color: #B61919;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     padding: 1rem 0;
     font-size: 2rem;
 }
@@ -16,18 +20,22 @@
     font-size: 1rem;
     text-align: center;
     margin-top: 2rem;
+    color: #B61919;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 .adminOuterDiv{
     width:50%;
     margin: auto;
     height: fit-content;
-    background-color: aquamarine;
+    background-color: #FF6B6B;
+    color: #FDD2BF;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     padding: 1rem;
     border-radius: 10px;
     margin-top: 1rem;
     display: grid;
 }
 .contactInfoHead{
+    color: #012443;
     font-size: 1.3rem;
-    font-weight: 600;
 }

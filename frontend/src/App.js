@@ -16,6 +16,8 @@ import Cordhistory from './Customer/Cordhistory';
 import Cproduct from './Customer/Cproduct';
 import Cprofile from './Customer/Cprofile';
 import Crecorder from './Customer/Crecorder';
+import AbakerCon from './Admin/AbakerCon';
+import Acustomercon from './Admin/Acustomercon';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route excat path="/customer/recentorder" component={Crecorder}></Route>
         <Route excat path="/customer/orderhistory" component={Cordhistory}></Route>
         <Route excat path="/customer" component={Chome}></Route>
+        <Route path="/adminbakercontact" component={AbakerCon}></Route>
+        <Route path="/admincustomercontact" component={Acustomercon}></Route>
         <Route path="/admincontact" component={AdminContact}></Route>
         <Route excat path='/' component={Home}></Route>
     </Switch>
