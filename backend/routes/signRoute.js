@@ -2,22 +2,17 @@ const express = require("express")
 const router= express.Router()
 const Register = require("../models/signupModel")
 const bcrypt = require('bcryptjs')
-const {check,validationResult} = require("express-validator")
+const {signUpVal} = require("../validator")
+const {signInVal} = require("../validator")
 
+router.route('/register').post(async(req,res)=>{
+    const {error} = signUpVal(req.body)
+    
+    if(error){
+        res.status(201).send({error:error.details[0].message})
+        // console.log("ee:",error)
+    } 
 
-router.route('/register').post([
-    check('name','Error occured in name').trim().isEmpty().isLength({min:1}),
-    check('uname','Error occured in username').trim().isEmpty().isLength({min:3}),
-    check('email').trim().isEmail().normalizeEmail(),
-    check('pswd').trim().isLength({min:6})
-],async(req,res)=>{
-    // const err = validationResult(req)
-    // if(!err.isEmpty()){
-    //     console.log(err.mapped())
-    //     return res.render('http://localhost:3000/signin',{title:"Create new user",errors:err.mapped()})
-    // }else{
-
-    // }
     try{
     const name = req.body.name;
     const uname = req.body.uname;
@@ -39,7 +34,7 @@ router.route('/register').post([
     
     //toekn generate(middleware)
     //console.log("success : ",newUser)
-    const token =await newUser.generateAuthToken()
+    const token =await newUser.generateAuthToken({expiresIn:"5 hours"})
     
     const reg = await newUser.save()
 
@@ -52,7 +47,10 @@ router.route('/register').post([
 })
 router.route('/signin').post(async(req,res)=>{
     try{
-        
+        const {error} = signInVal(req.body)
+        if(error){
+            res.status(201).send({error:error.details[0].message})
+        }
         const email = req.body.email;
         const pswd = req.body.pswd;
 

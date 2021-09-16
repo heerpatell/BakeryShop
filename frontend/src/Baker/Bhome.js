@@ -6,7 +6,7 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 
 function Bhome() {
     const [showNav,setShowNav]= useState(true)
-
+    
     var displayNav = ()=>{
         setShowNav(!showNav)
     }

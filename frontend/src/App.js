@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch,Redirect } from 'react-router-dom'
 import Home from '../src/HomePage/Home/Home'
 import Contact from './HomePage/Contact/Contact'
 import SignIn from './signIn_Up/SignIn'
@@ -20,6 +20,7 @@ import AbakerCon from './Admin/AbakerCon';
 import Acustomercon from './Admin/Acustomercon';
 
 function App() {
+  var loggedIn = false
   return (
     <div className="App">
     <Switch>

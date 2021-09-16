@@ -21,11 +21,11 @@ function SignIn() {
         }
         axios.post('http://localhost:5001/auth/signin',userData)
         .then(res => {
-            alert(res.data.message)
-
+            
             try{
                 if(res.data.message==='Login succesfully'){
-                    console.log("inside")
+                    alert(res.data.message)
+                    // console.log("inside")
                     if(res.data.userToken==='Customer'){
                         history.push('/customer')
                     }else if(res.data.userToken==="Baker"){
@@ -34,7 +34,10 @@ function SignIn() {
                         history.push('/adminbakercontact')
                     }
                 }else{
-                    history.push('/signin')
+                    if(res.data.error){
+                        alert(res.data.error)
+                    }
+                    res.data.error ? history.push('/signin') :alert(res.data.message)  
                 }
             }catch(e){
                 console.log("error",e)

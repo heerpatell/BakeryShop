@@ -25,13 +25,15 @@ function Signup() {
         }
         axios.post('http://localhost:5001/auth/register',newContact)
         .then(res=>{
-            alert(res.data.message)
             if(res.data.message==='Registered succesfully'){
+                alert(res.data.message)
                 history.push('/signin')
+            }
+            if(res.data.error){
+                alert(res.data.error)
             }
         })
     }
-
     return (
     <>
     <div className="sign_main">
@@ -43,7 +45,7 @@ function Signup() {
             <form method="post" action="/signup"> 
                 <div className="upRow">
                     <div className="upCol">
-                        <label className="inLabel">Name </label>
+                        <label className="inLabel">Name* </label>
                         <input type="text"
                         placeholder="Name" 
                         className="upInpR" 
@@ -52,7 +54,7 @@ function Signup() {
                         onChange={handleInp}></input>
                     </div>   
                     <div className="upCol">   
-                        <label className="inLabel">Username </label>
+                        <label className="inLabel">Username* </label>
                         <input type="text" 
                         placeholder ="Username" 
                         className="upInpR" 
@@ -63,7 +65,7 @@ function Signup() {
                 </div>   
                 <div className="upRow">
                     <div className="upCol">
-                        <label className="inLabel">Email </label>
+                        <label className="inLabel">Email* </label>
                         <input type="email" 
                         placeholder="Email" 
                         className="upInp"
@@ -74,7 +76,7 @@ function Signup() {
                 </div>        
                 <div className="upRow">
                     <div className="upCol">
-                        <label className="inLabel">Password </label>
+                        <label className="inLabel">Password* </label>
                         <input type="password" 
                         placeholder="Password"
                         className="upInp" 

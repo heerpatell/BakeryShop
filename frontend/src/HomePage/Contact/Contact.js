@@ -33,6 +33,11 @@ function Contact() {
             msg:input.msg
         }
         axios.post('http://localhost:5001/contactapi/create',newContact)
+        .then(res=>{
+            if(res.data.error){
+                alert(res.data.error)
+            }
+        })
     }
 
     return (
