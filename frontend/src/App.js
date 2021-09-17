@@ -20,7 +20,8 @@ import AbakerCon from './Admin/AbakerCon';
 import Acustomercon from './Admin/Acustomercon';
 
 function App() {
-  var loggedIn = false
+const {isAuth} = SignIn() 
+  console.log("isAuth :",isAuth)
   return (
     <div className="App">
     <Switch>
@@ -29,15 +30,39 @@ function App() {
         <Route path='/contact' component={Contact}></Route>
         <Route path='/about' component={About}></Route>
         <Route excat path="/baker/profile" component={Bprofile}></Route>
+        <Route excat path="/baker" 
+        render={() => (
+          isAuth ? (
+            <Bprofile/>
+          ) : (
+            <SignIn/>
+          )
+          )}/>
+        <Route excat path="/customer"
+        render={() => (
+          isAuth ? (
+            <Chome/>
+          ) : (
+            <SignIn/>
+          )
+          )}/>
+        <Route path="/admincontact" 
+          render={() => (
+           isAuth ? (
+             <AbakerCon/>
+           ) : (
+             <SignIn/>
+           )
+         )}/>
         <Route excat path="/baker/product" component={Product}></Route>
         <Route excat path="/baker/recentorder" component={ReceOrder}></Route>
         <Route excat path="/baker/orderhistory" component={OrderHis}></Route>
-        <Route excat path="/baker" component={Bhome}></Route>
+        {/* <Route excat path="/baker" component={Bhome}></Route> */}
         <Route excat path="/customer/profile" component={Cprofile}></Route>
         <Route excat path="/customer/product" component={Cproduct}></Route>
         <Route excat path="/customer/recentorder" component={Crecorder}></Route>
         <Route excat path="/customer/orderhistory" component={Cordhistory}></Route>
-        <Route excat path="/customer" component={Chome}></Route>
+        {/* <Route excat path="/customer" component={Chome}></Route> */}
         <Route path="/adminbakercontact" component={AbakerCon}></Route>
         <Route path="/admincustomercontact" component={Acustomercon}></Route>
         <Route path="/admincontact" component={AdminContact}></Route>

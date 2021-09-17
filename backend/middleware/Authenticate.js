@@ -1,23 +1,20 @@
 const jwt = require('jsonwebtoken')
-const Register = require('../models/signupModel')
 
-const Authentiacte = async (req,res,next)=>{
-    try{
-        const token = req.cookies.jwtoken
-        const verifyToken = jwt.verify(token ,process.env.SECRET_KEY)
-        const user = await Register.findOne({_id : verifyToken._id,"tokens.token":token})
-        
-        if(!user){throw new Error("User not found")}
-
-        req.token = token
-        req.user = user
-        req.userId = user._id
-
-        next()
+module.exports = function(req,res,next){
+    //token exists
+    const token = req.cookies.access_token;
+    if(!token){
+        req.user = {isAuthenticated:false}
+        // res.json({isAuthenticated:false})
     }
-    catch(e){
-        res.status(401).send("unauthorized : no token provided")
+    if (token){
+    //verify token
+    const verified = jwt.verify(token,process.env.SECRET_KEY)
+
+    if(!verified){
+        return res.json({isAuthenticated:false})
     }
+    req.user = verified;
+    }
+    next()
 }
-
-module.exports = Authenticate
