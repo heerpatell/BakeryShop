@@ -20,7 +20,7 @@ import AbakerCon from './Admin/AbakerCon';
 import Acustomercon from './Admin/Acustomercon';
 
 function App() {
-const {isAuth} = SignIn() 
+  const {isAuth} = SignIn() 
   console.log("isAuth :",isAuth)
   return (
     <div className="App">
@@ -30,15 +30,15 @@ const {isAuth} = SignIn()
         <Route path='/contact' component={Contact}></Route>
         <Route path='/about' component={About}></Route>
         <Route excat path="/baker/profile" component={Bprofile}></Route>
-        <Route excat path="/baker" 
+        <Route path="/bake" 
         render={() => (
           isAuth ? (
-            <Bprofile/>
+            <Bhome/>
           ) : (
             <SignIn/>
           )
           )}/>
-        <Route excat path="/customer"
+        <Route path="/custome"
         render={() => (
           isAuth ? (
             <Chome/>
@@ -46,10 +46,10 @@ const {isAuth} = SignIn()
             <SignIn/>
           )
           )}/>
-        <Route path="/admincontact" 
+        <Route path="/admin" 
           render={() => (
            isAuth ? (
-             <AbakerCon/>
+             <AdminContact/>
            ) : (
              <SignIn/>
            )
@@ -57,12 +57,12 @@ const {isAuth} = SignIn()
         <Route excat path="/baker/product" component={Product}></Route>
         <Route excat path="/baker/recentorder" component={ReceOrder}></Route>
         <Route excat path="/baker/orderhistory" component={OrderHis}></Route>
-        {/* <Route excat path="/baker" component={Bhome}></Route> */}
+        <Route excat path="/baker" component={Bhome}></Route>
         <Route excat path="/customer/profile" component={Cprofile}></Route>
         <Route excat path="/customer/product" component={Cproduct}></Route>
         <Route excat path="/customer/recentorder" component={Crecorder}></Route>
         <Route excat path="/customer/orderhistory" component={Cordhistory}></Route>
-        {/* <Route excat path="/customer" component={Chome}></Route> */}
+        <Route excat path="/customer" component={Chome}></Route>
         <Route path="/adminbakercontact" component={AbakerCon}></Route>
         <Route path="/admincustomercontact" component={Acustomercon}></Route>
         <Route path="/admincontact" component={AdminContact}></Route>

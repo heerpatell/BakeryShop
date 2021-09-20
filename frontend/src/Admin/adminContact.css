@@ -39,3 +39,7 @@ body{
     color: #012443;
     font-size: 1.3rem;
 }
+.mailContact{
+    display: flex;
+    justify-content: end;
+}

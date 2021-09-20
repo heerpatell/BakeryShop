@@ -1,7 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import './adminContact.css'
 import Adsidebar from '../Component/Adsidebar'
-
+import {RiMailAddLine} from 'react-icons/ri'
+import {RiMailCheckLine} from 'react-icons/ri'
 
 function AdminContact() {
     const [showNav,setShowNav]= useState(true)
@@ -17,6 +18,12 @@ function AdminContact() {
         getContact();
     },[]);
 
+    const [mailIcon,setMailIcon] = useState(<RiMailAddLine size={30}/>)
+    
+    const mailSubmit =  () =>{
+        setMailIcon(<RiMailCheckLine size={30}/>)
+    }
+
     return (
     <>
     <div className="adminHome">
@@ -28,6 +35,7 @@ function AdminContact() {
         contact.map((curElem)=>{
             return(
             <div className="adminOuterDiv" key={curElem.id}>
+                <div className="mailContact" onClick={mailSubmit}>{mailIcon}</div>
                 <div><span className="contactInfoHead">Name:  </span>{curElem.name}</div><br/>
                 <div><span className="contactInfoHead">Email: </span>{curElem.email} </div><br/>
                 <div><span className="contactInfoHead">Subject: </span>{curElem.sub}</div><br/>

@@ -34,7 +34,7 @@ router.route('/register').post(async(req,res)=>{
     
     //toekn generate(middleware)
     //console.log("success : ",newUser)
-    const token =await newUser.generateAuthToken({expiresIn:"5 hours"})
+    const token =await newUser.generateAuthToken()
     
     const reg = await newUser.save()
 
