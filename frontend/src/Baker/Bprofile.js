@@ -47,18 +47,26 @@ function Bprofile() {
         console.log("her")
         const profileData = {
             bname:inp.bname,
+            uname:inp.uname,
             sellProduct:inp.sellProduct,
             availTime:inp.availTime,
+            email:inp.email,
+            role:inp.role,
             city:inp.city,
             area:inp.area,
             cont:inp.cont,
             socialmedia:inp.socialmedia
         }
-        // axios.post("http://localhost:5001/baker/profilepost",profileData)
-        // .then(res=>{
-        //     console.log(res)
-        //     alert(res.data.message)
-        // })
+        axios.post("http://localhost:5001/baker/profile/add",profileData)
+        .then(res=>{
+            console.log(res)
+            if(res.data.error){
+                alert(res.data.error)
+            }
+            if(res.data.message==="Updated succesfully"){
+                alert(res.data.message)
+            }
+        })
     }
     
     const [showNav,setShowNav] = useState(true);

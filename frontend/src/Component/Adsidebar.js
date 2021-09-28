@@ -12,7 +12,9 @@ function Adsidebar({show}) {
 
     const logOutClicked = () =>{
         console.log("clicked")
-        axios.get("http://localhost:5001/auth/logout")
+        axios.get("http://localhost:5001/auth/logout",{
+            withCredentials:true
+        })
         .then(res=>{
             history.push('/signin',{
                 replace:true
@@ -33,7 +35,7 @@ function Adsidebar({show}) {
         <li className="baker-list-item"><Link to="/adminbakercontact" className="baker-list-link"><GiCakeSlice/>Bakers</Link></li>
         <li className="baker-list-item"><Link to="/admincustomercontact" className="baker-list-link"><BiReceipt/>Customers</Link></li>
         <li className="baker-list-item"><Link to="/admincontact" className="baker-list-link"><RiHistoryLine/>Contacts</Link></li>
-        <li className="baker-list-item"><Link onClick={logOutClicked} className="baker-list-link"><FiLogOut/>Log out</Link></li>
+        <li className="baker-list-item"><Link to="/signin" onClick={logOutClicked} className="baker-list-link"><FiLogOut/>Log out</Link></li>
     </ul>
     </div>
     </>

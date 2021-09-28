@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "../Home/home.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import yellowcc from '../../img/Home/yellowCc.png'
@@ -64,7 +65,9 @@ function Home() {
                                     <p>Sell</p>
                                 </div>
                             </div>
-                            <Button variant="outlined" color="primary" className="btn mt-3" style={{color:"#283C63", border:"1px solid white"}}>Sign Up</Button>
+                            <Button variant="outlined" color="primary" className="btn mt-3" style={{color:"#283C63", border:"1px solid white"}}>
+                            <Link to="/contact" style={{textDecoration:"none" ,color:"#283C63"}}>Sign Up</Link>
+                            </Button>
                         </div>
                     </div>
 
@@ -89,7 +92,9 @@ function Home() {
                                     <p>Purchase</p>
                                 </div>
                             </div>
-                            <Button variant="outlined" color="primary" className="btn mt-3" style={{color:"#283C63", border:"1px solid white"}}>Sign Up</Button>
+                            <Button variant="outlined" color="primary" className="btn mt-3" style={{color:"#283C63", border:"1px solid white"}}>
+                                <Link to="/signup" style={{textDecoration:"none" ,color:"#283C63"}}>Sign Up</Link>
+                            </Button>
                         </div>
                     </div>
                 </div>

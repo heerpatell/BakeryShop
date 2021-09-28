@@ -4,6 +4,7 @@ const Register = require("../models/signupModel")
 const bcrypt = require('bcryptjs')
 const {signUpVal} = require("../validator")
 const {signInVal} = require("../validator")
+const auth = require('../middleware/Authenticate')
 
 router.route('/register').post(async(req,res)=>{
     const {error} = signUpVal(req.body)
@@ -19,7 +20,7 @@ router.route('/register').post(async(req,res)=>{
     const email = req.body.email;
     const pswd = req.body.pswd;
     const stoken = req.body.stoken;
-    const scheck = req.body.scheck;
+    // const scheck = req.body.scheck;
 
     const newUser = new Register({
         name,
@@ -27,14 +28,14 @@ router.route('/register').post(async(req,res)=>{
         email,
         pswd,
         stoken,
-        scheck
+        // scheck
     })
     console.log(newUser)
     //pswd hash(middleware)
     
     //toekn generate(middleware)
     //console.log("success : ",newUser)
-    const token =await newUser.generateAuthToken()
+    // const token =await newUser.generateAuthToken()
     
     const reg = await newUser.save()
 
@@ -55,23 +56,35 @@ router.route('/signin').post(async(req,res)=>{
         const pswd = req.body.pswd;
 
         const useremail = await Register.findOne({email})   //email:email (object destructuring)
+        if(useremail){
+            const isMatch = await bcrypt.compare(pswd, useremail.pswd)
 
-        const isMatch = await bcrypt.compare(pswd, useremail.pswd)
+            const token =await useremail.generateAuthToken()  //middleware
+            console.log(token)
 
-        const token =await useremail.generateAuthToken()  //middleware
-        console.log(token)
+            var date = new Date();
+            date.setTime(date.getTime() + (300 * 1000));    //5min
+            const options={
+                // secure:false, 
+                httpOnly:true,
+                expires:date    //expires in 5 minute
+            }
+            
+            res.cookie('jwt',token,options)
 
-        const userToken = useremail.stoken
-        
-        if(isMatch){
-            res.status(201).send({message:"Login succesfully",userToken})
+            const userToken = useremail.stoken
+            
+            if(isMatch){
+                res.status(201).send({message:"Login succesfully",userToken})
 
-            // res.writeHead(201,{Location: 'http://localhost:3000/baker'});
-            // res.end();
-            console.log("redirecting..")
-        }else{
-            res.send({message:"Pswd didn't match, Try again!!"})
-            console.log("Not matching")
+                console.log("redirecting..")
+            }else{
+                res.send({message:"Pswd didn't match, Try again!!"})
+                console.log("Not matching")
+            }
+        }
+        else{
+            console.log("credential does not mtach")
         }
     }catch(e){
         res.status(400).send("Invalid ")
@@ -79,8 +92,21 @@ router.route('/signin').post(async(req,res)=>{
 })
 
 router.route('/logout').get(async(req,res)=>{
+    // console.log(req.cookies)
     console.log("logout")
-    res.clearCookie('jwtoken',{path : '/'})
+
+    // res.clearCookie('jwt',{path : '/'})
+    // res.clearCookie('jwt')
+
+    var date = new Date();
+    date.setTime(date.getTime() + (5 * 1000));    //5 second
+    const options={
+        // secure:false, 
+        httpOnly:true,
+        expires:date    //expires in 5 second
+    }
+    res.cookie('jwt',"expired",options)
+
     res.status(200).send({message:"user logout"})
 })
 

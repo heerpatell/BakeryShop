@@ -1,20 +1,18 @@
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-module.exports = function(req,res,next){
-    //token exists
-    const token = req.cookies.access_token;
-    if(!token){
-        req.user = {isAuthenticated:false}
-        // res.json({isAuthenticated:false})
-    }
-    if (token){
-    //verify token
-    const verified = jwt.verify(token,process.env.SECRET_KEY)
-
-    if(!verified){
-        return res.json({isAuthenticated:false})
-    }
-    req.user = verified;
-    }
-    next()
-}
+module.exports = (req, res, next) => {
+  // Read the token from the cookie
+  const token = req.cookies.token;
+  if (!token)   
+    return res.status(401).send({message:"Access denied...No token provided..."});
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET);
+    req.user = decoded;
+    next();
+  } catch (er) {
+    //Incase of expired jwt or invalid token kill the token and clear the cookie
+    res.clearCookie("jwt");
+    return res.status(400).send({message:"error in auth:",er});
+  }
+};

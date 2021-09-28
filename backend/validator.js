@@ -28,6 +28,23 @@ const contactVal =(data)=>{
     return schema.validate(data)
 }
 
+const profileVal = (data)=>{
+    const schema = joi.object({
+        bname:joi.string().required().min(2),
+        uname:joi.string().required().min(2),
+        sellProduct:joi.string().required().min(5),
+        availTime:joi.string().required().min(2),
+        email:joi.string().required().email(),
+        role:joi.string().required().min(2),
+        city:joi.string().required().min(2),
+        area:joi.string().required().min(2),
+        cont:joi.number().required().min(2),
+        socialmedia:joi.string().required().min(3),
+    })
+    return schema.validate(data)
+}
+
 module.exports.signInVal =  signInVal
 module.exports.signUpVal =  signUpVal
 module.exports.contactVal =  contactVal
+module.exports.profileVal =  profileVal

@@ -22,9 +22,11 @@ function SignIn() {
             email:user.email,
             pswd:user.pswd
         }
-        axios.post('http://localhost:5001/auth/signin',userData)
-        .then(res => {
-            
+        // axios.defaults.withCredentials = true;
+        axios.post('http://localhost:5001/auth/signin',userData,{
+            withCredentials:true
+        })
+        .then(res => {      
             try{
                 if(res.data.message==='Login succesfully'){
                     SetisAuth(true)

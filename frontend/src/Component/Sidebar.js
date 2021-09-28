@@ -16,19 +16,25 @@ function Sidebar({show}) {
 
     const logOutClicked = () =>{
         console.log("clicked")
-        axios.get("http://localhost:5001/auth/logout")
-        .then(res=>{
+        try{
+            axios.get("http://localhost:5001/auth/logout",{
+                withCredentials:true
+            })
+            .then(res=>{
+            console.log(res)
+            alert(res.data.message)
             history.push('/signin',{
                 replace:true
             })
             if(res.status!=200){
+                console.log("error occured in logout",error)       
                 const error = new Error(res.error)
-                throw error       
             }
-        })
-        .catch((e)=>{
+            })
+        }
+        catch(e){
             console.log("error: ",e)
-        })
+        }
     }
 
     return (
@@ -40,7 +46,7 @@ function Sidebar({show}) {
         <li className="baker-list-item"><Link to="/baker/product" className="baker-list-link"><GiCakeSlice/>  Product</Link></li>
         <li className="baker-list-item"><Link to="/baker/recentorder" className="baker-list-link"><BiReceipt/>Recent Order</Link></li>
         <li className="baker-list-item"><Link to="/baker/orderhistory" className="baker-list-link"><RiHistoryLine/>Order History</Link></li>
-        <li className="baker-list-item"><Link onClick={logOutClicked} className="baker-list-link"><FiLogOut/>Log out</Link></li>
+        <li className="baker-list-item"><Link to="/signin" onClick={logOutClicked} className="baker-list-link"><FiLogOut/>Log out</Link></li>
     </ul>
     </div>
     </>
