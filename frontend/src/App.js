@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch,Redirect } from 'react-router-dom'
+import {Route, Switch } from 'react-router-dom'
 import Home from '../src/HomePage/Home/Home'
 import Contact from './HomePage/Contact/Contact'
 import SignIn from './signIn_Up/SignIn'
@@ -20,8 +20,6 @@ import AbakerCon from './Admin/AbakerCon';
 import Acustomercon from './Admin/Acustomercon';
 
 function App() {
-  const {isAuth} = SignIn() 
-  console.log("isAuth :",isAuth)
   return (
     <div className="App">
     <Switch>
@@ -30,30 +28,6 @@ function App() {
         <Route path='/contact' component={Contact}></Route>
         <Route path='/about' component={About}></Route>
         <Route excat path="/baker/profile" component={Bprofile}></Route>
-        <Route path="/bake" 
-        render={() => (
-          isAuth ? (
-            <Bhome/>
-          ) : (
-            <SignIn/>
-          )
-          )}/>
-        <Route path="/custome"
-        render={() => (
-          isAuth ? (
-            <Chome/>
-          ) : (
-            <SignIn/>
-          )
-          )}/>
-        <Route path="/admin" 
-          render={() => (
-           isAuth ? (
-             <AdminContact/>
-           ) : (
-             <SignIn/>
-           )
-         )}/>
         <Route excat path="/baker/product" component={Product}></Route>
         <Route excat path="/baker/recentorder" component={ReceOrder}></Route>
         <Route excat path="/baker/orderhistory" component={OrderHis}></Route>

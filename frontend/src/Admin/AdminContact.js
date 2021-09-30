@@ -3,10 +3,28 @@ import './adminContact.css'
 import Adsidebar from '../Component/Adsidebar'
 import {RiMailAddLine} from 'react-icons/ri'
 import {RiMailCheckLine} from 'react-icons/ri'
+import axios from 'axios'
+import { useHistory } from 'react-router'
 
 function AdminContact() {
     const [showNav,setShowNav]= useState(true)
     const [contact,setContact] = useState([])
+
+    const history = useHistory()
+    const verifyUser = async () =>{
+        const response = axios.get('http://localhost:5001/auth/verify',{
+            withCredentials:true
+        })
+        .then((res)=>{
+            if(res.data.message==="No token provided"){
+                history.push('/signin')
+            }else if(res.data.message==="Token issued"){
+                history.push('/admincontact')
+            }else if(res.data.message==="Token problem"){
+                history.push('/signin')
+            }    
+       })
+    } 
 
     const getContact = async() =>{
         const response = await fetch('http://localhost:5001/contactapi/get');
@@ -15,6 +33,7 @@ function AdminContact() {
     }
     
     useEffect(() => {
+        verifyUser();
         getContact();
     },[]);
 

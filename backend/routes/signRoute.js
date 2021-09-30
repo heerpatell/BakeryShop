@@ -91,8 +91,11 @@ router.route('/signin').post(async(req,res)=>{
     }
 })
 
+router.route('/verify').get(auth,async(req,res)=>{
+    // console.log("in /verify")
+})
+
 router.route('/logout').get(async(req,res)=>{
-    // console.log(req.cookies)
     console.log("logout")
 
     // res.clearCookie('jwt',{path : '/'})
@@ -109,5 +112,7 @@ router.route('/logout').get(async(req,res)=>{
 
     res.status(200).send({message:"user logout"})
 })
+
+
 
 module.exports = router;

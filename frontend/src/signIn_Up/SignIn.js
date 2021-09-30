@@ -4,7 +4,6 @@ import './sign.css'
 import axios from 'axios'
 
 function SignIn() {
-    const [isAuth,SetisAuth]=useState(false)
     let history = useHistory()
    
     // console.log("isAuth",isAuth)
@@ -29,7 +28,6 @@ function SignIn() {
         .then(res => {      
             try{
                 if(res.data.message==='Login succesfully'){
-                    SetisAuth(true)
                     alert(res.data.message)
                     // console.log("inside")
                     if(res.data.userToken==='Customer'){
@@ -41,7 +39,6 @@ function SignIn() {
                     }
                 }else{
                     if(res.data.error){
-                        SetisAuth(false)
                         alert(res.data.error)
                     }
                     res.data.error ? history.push('/signin') :alert(res.data.message)  

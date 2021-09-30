@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Sidebar from '../Component/Sidebar'
-import {GiHamburgerMenu} from 'react-icons/gi'
+// import {GiHamburgerMenu} from 'react-icons/gi'
 import {VscAdd} from 'react-icons/vsc'
 import {AiOutlineClose} from 'react-icons/ai'
 import './product.css'
@@ -12,7 +12,8 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-
+import { useHistory } from 'react-router'
+import axios from 'axios'
 
 const styles = (theme) => ({
     root: {
@@ -73,9 +74,9 @@ function Product() {
         setOpen(false);
     };
 
-    var displayNav = ()=>{
-        setShowNav(!showNav)
-    } 
+    // var displayNav = ()=>{
+    //     setShowNav(!showNav)
+    // } 
    
     const handleChange = (e) =>{
       const {name,value} = e.target;
@@ -94,6 +95,27 @@ function Product() {
         setInput('')
       }
     }
+
+    const history = useHistory()
+    const verifyUser = async () =>{
+        axios.get('http://localhost:5001/auth/verify',{
+            withCredentials:true
+        })
+        .then((res)=>{
+            if(res.data.message==="No token provided"){
+                history.push('/signin')
+            }else if(res.data.message==="Token issued"){
+                history.push('/baker')
+            }else if(res.data.message==="Token problem"){
+                history.push('/signin')
+            }    
+       })
+     } 
+
+    useEffect(() => {
+        verifyUser();
+    }, [])
+
 
     return (
     <>
@@ -147,7 +169,7 @@ function Product() {
               //     Color : {item.color} 
               // </div>
               <div className="bakerProductList">
-                <div className={catNum%4==0 ? 'bakerAddProduct' : 'bakerAddProductRest'} style={{backgroundColor: "#B61919"}} >
+                <div className={catNum%4===0 ? 'bakerAddProduct' : 'bakerAddProductRest'} style={{backgroundColor: "#B61919"}} >
                 <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem', color:"#FDD2BF" }}>
                     <h4 className="catName">{item.name}</h4>
                 </div>

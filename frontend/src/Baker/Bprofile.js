@@ -20,6 +20,26 @@ function Bprofile() {
     })
     let history = useHistory()
 
+    const verifyUser = async () =>{
+        const response = axios.get('http://localhost:5001/auth/verify',{
+            withCredentials:true
+        })
+        .then((res)=>{
+            if(res.data.message==="No token provided"){
+                history.push('/signin')
+            }else if(res.data.message==="Token issued"){
+                history.push('/baker')
+            }else if(res.data.message==="Token problem"){
+                history.push('/signin')
+            }    
+       })
+     } 
+
+    useEffect(() => {
+        verifyUser();
+    }, [])
+
+
     const handleInp = (e) =>{
         const {name,value} = e.target;
         setInp({...inp,[name]:value});

@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import SidebarCustomer from '../Component/SidebarCustomer'
 import axios from 'axios'
 import { useHistory } from 'react-router'
+
 function Cprofile() {
 
     const [inp,setInp] = useState({
@@ -17,6 +18,25 @@ function Cprofile() {
         socialmedia:""
     })
     let history = useHistory()
+
+    const verifyUser = async () =>{
+        const response = axios.get('http://localhost:5001/auth/verify',{
+            withCredentials:true
+        })
+        .then((res)=>{
+            if(res.data.message==="No token provided"){
+                history.push('/signin')
+            }else if(res.data.message==="Token issued"){
+                history.push('/customer')
+            }else if(res.data.message==="Token problem"){
+                history.push('/signin')
+            }    
+       })
+     } 
+
+     useEffect(() => {
+        verifyUser();
+    }, [])
 
     const handleInp = (e) =>{
         const {name,value} = e.target;
