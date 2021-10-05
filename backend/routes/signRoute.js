@@ -63,11 +63,11 @@ router.route('/signin').post(async(req,res)=>{
             console.log(token)
 
             var date = new Date();
-            date.setTime(date.getTime() + (300 * 1000));    //5min
+            date.setTime(date.getTime() + (3600 * 1000));    //1 hr
             const options={
                 // secure:false, 
                 httpOnly:true,
-                expires:date    //expires in 5 minute
+                expires:date    //expires in 1hr
             }
             
             res.cookie('jwt',token,options)

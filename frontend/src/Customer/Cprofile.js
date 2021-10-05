@@ -6,16 +6,12 @@ import { useHistory } from 'react-router'
 function Cprofile() {
 
     const [inp,setInp] = useState({
-        bname:"",
         uname:"",
-        sellProduct:"",
-        availTime:"",
         email:"",
         role:"",
         city:"",
         area:"",
-        cont:"",
-        socialmedia:""
+        cont:""
     })
     let history = useHistory()
 
@@ -27,15 +23,25 @@ function Cprofile() {
             if(res.data.message==="No token provided"){
                 history.push('/signin')
             }else if(res.data.message==="Token issued"){
-                history.push('/customer')
+                history.push('/customer/profile')
             }else if(res.data.message==="Token problem"){
                 history.push('/signin')
             }    
        })
      } 
 
-     useEffect(() => {
+    //  const custInfo = async () =>{
+    //     await axios.get('http://localhost:5001/profile/get',{
+    //         withCredentials:true
+    //     })
+    //     .then((res)=>{
+    //         console.log(res)
+    //     })
+    //  }
+
+     useEffect(() => { 
         verifyUser();
+        // custInfo();
     }, [])
 
     const handleInp = (e) =>{
@@ -62,17 +68,12 @@ function Cprofile() {
 
     const handleSub =(e)=>{
         e.preventDefault()
-        console.log("her")
-        const profileData = {
-            bname:inp.bname,
-            sellProduct:inp.sellProduct,
-            availTime:inp.availTime,
-            city:inp.city,
-            area:inp.area,
-            cont:inp.cont,
-            socialmedia:inp.socialmedia
-        }
-        // axios.post("http://localhost:5001/baker/profilepost",profileData)
+        // const profileData = {
+        //     bname:inp.bname,
+        //     city:inp.city,
+        //     area:inp.area,
+        // }
+        // axios.post("http://localhost:5001/profile/postdata",profileData)
         // .then(res=>{
         //     console.log(res)
         //     alert(res.data.message)
@@ -97,11 +98,11 @@ function Cprofile() {
             <form method="post" action="/baker/profile">
                 <div className="proRow">
                     <div className="proCol">
-                        <label className="proLab">Name*</label><br/>
+                        <label className="proLab">Role*</label><br/>
                         <input type="text"
                         className="proIn"
-                        name="bname"
-                        value={inp.bname}
+                        name="role"
+                        value={inp.role}
                         onChange={handleInp}
                         />
                     </div>   
@@ -130,8 +131,8 @@ function Cprofile() {
                         <label className="proLab">Contact*</label><br/>
                         <input type="text"
                         className="proIn"
-                        name="contact"
-                        value={inp.role}
+                        name="cont"
+                        value={inp.cont}
                         onChange={handleInp}
                         />
                     </div>   
@@ -143,7 +144,7 @@ function Cprofile() {
                         <input type="text"
                         className="proIn"
                         name="area"
-                        value={inp.city}
+                        value={inp.area}
                         onChange={handleInp}
                         />
                     </div>
@@ -152,7 +153,7 @@ function Cprofile() {
                         <input type="text"
                         className="proIn"
                         name="city"
-                        value={inp.area}
+                        value={inp.city}
                         onChange={handleInp}
                         />
                     </div>   

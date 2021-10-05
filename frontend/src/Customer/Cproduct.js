@@ -16,7 +16,7 @@ function Cproduct() {
             if(res.data.message==="No token provided"){
                 history.push('/signin')
             }else if(res.data.message==="Token issued"){
-                history.push('/customer')
+                history.push('/customer/product')
             }else if(res.data.message==="Token problem"){
                 history.push('/signin')
             }    
