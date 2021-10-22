@@ -5,6 +5,7 @@
 }
 body{
     background-image: url('/src/img/Baker/Bproduct.png');
+    font-family:"Georgia, 'Times New Roman', Times, serif;"
 }
 .bakerProductList{
     display: flex;
@@ -15,6 +16,7 @@ body{
 
 }
 .bakerAddProduct{
+    cursor: pointer;
     margin-left: 15rem;
     margin-top: 2rem;
     height: 12rem;
@@ -22,6 +24,7 @@ body{
     border-radius: 5px;
 }
 .bakerAddProductRest{
+    cursor: pointer;
     margin-left: 4rem;
     margin-top: 2rem;
     height: 12rem;

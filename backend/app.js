@@ -6,8 +6,9 @@ const cookieParser = require("cookie-parser");
 const signuproute = require("./routes/signRoute")
 const contactroute = require("./routes/contactRoute")
 const adminroute = require('./routes/adminRoute')
-const bakerroute = require("./routes/bakerRoute")
 const profileroute = require("./routes/profileRoute")
+const productroute = require("./routes/productRoute")
+const cartroute = require("./routes/cartRoute")
 
 const app = express()
 app.use(express.urlencoded({extended:false}))
@@ -27,10 +28,11 @@ mongoose.connect("mongodb+srv://heer:heer123@cluster0.njtdf.mongodb.net/Bakery",
 })  
 
 app.use("/admin",adminroute)   //admin route
-app.use("/contactapi",contactroute);    //contact route
-app.use("/auth",signuproute);    //signup route
-app.use("/baker",bakerroute)    
+app.use("/contactapi",contactroute)    //contact route
+app.use("/auth",signuproute)    //signup route
 app.use("/profile",profileroute)    //profile section
+app.use("/product",productroute)    //product route
+app.use("/cart",cartroute)  //cart route
 
 app.get('/hi',(req,res)=>{
     res.cookie("ok","success",{maxAge:20000})

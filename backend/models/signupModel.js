@@ -25,6 +25,34 @@ const signSchema = new mongoose.Schema({
     stoken:{
         type:String,      
     },
+    bname:{
+        type:String,
+        // required:true
+    },
+    sellProduct:{
+        type:String,
+        // required:true
+    },
+    availTime:{
+        type:String,
+        // required:true
+    },
+    city:{
+        type:String,
+        // required:true
+    },
+    area:{
+        type:String,
+        // required:true
+    },
+    cont:{
+        type:Number,
+        // requierd:true
+    },
+    socialmedia:{
+        type:String,
+        // required:true
+    },
     tokens:[{
         token:{
             type:String,

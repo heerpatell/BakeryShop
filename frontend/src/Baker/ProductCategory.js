@@ -13,6 +13,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router'
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 const styles = (theme) => ({
@@ -57,13 +58,14 @@ const styles = (theme) => ({
   
 
 function Product() {
+
     const [open, setOpen] = useState(false);
     const [showNav,setShowNav] = useState(true);
     const [input, setInput] = useState({
       name:'',
       color:'#B61919'
     })
-    const [catlist,setCatList]=useState(["a"])
+    const [category,setCategory]=useState([])
 
     var catNum=1;
 
@@ -86,13 +88,21 @@ function Product() {
       })
   }
 
-    const addCat = (e) =>{
+    const addCat = async (e)=>{
       e.preventDefault()
       if(!input){
 
       }else{
-        setCatList([...catlist,input]);
-        setInput('')
+        const catDetail = {
+          categoryname:input.name
+        }
+        axios.post("http://localhost:5001/product/addcategory",catDetail,{
+          withCredentials:true
+        }).then((res)=>{
+          setInput('')
+          console.log("succesfully addded category ",res.data.categoryname)
+        })
+
       }
     }
 
@@ -105,17 +115,35 @@ function Product() {
             if(res.data.message==="No token provided"){
                 history.push('/signin')
             }else if(res.data.message==="Token issued"){
-                history.push('/baker/product  ')
+                history.push('/baker/product')
             }else if(res.data.message==="Token problem"){
                 history.push('/signin')
             }    
        })
      } 
 
+   const getCategory = async() =>{
+        await axios.get("http://localhost:5001/product/getcategory",{
+          withCredentials:true
+        })
+        .then(async(res)=>{ 
+          setCategory(await res.data.user)
+          // const categories = res.data.user
+
+          // setCategory([await {categories}])
+
+          console.log("users ", await res.data.user)
+          console.log("category ",category)
+        })
+        .catch((e)=>{
+          console.log("error",e)
+        })
+    }
+
     useEffect(() => {
         verifyUser();
+        getCategory();
     }, [])
-
 
     return (
     <>
@@ -123,7 +151,6 @@ function Product() {
         <GiHamburgerMenu size={30} onClick={displayNav}/>
     </header> */}
     <Sidebar  show={showNav} />
-   
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
             Add Catagory
@@ -160,26 +187,24 @@ function Product() {
               <h4>Add catageory</h4>
           </div>  
         </div>
-
-        {
-            catlist.map((item,ind)=>{
-              return (
-              //   <div key={ind} style={{background:item.color, width:"150px", height:"150px"}}>
-              //     Name  : {item.name}<br/>
-              //     Color : {item.color} 
-              // </div>
-              <div className="bakerProductList">
-                <div className={catNum%4===0 ? 'bakerAddProduct' : 'bakerAddProductRest'} style={{backgroundColor: "#B61919"}} >
-                <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem', color:"#FDD2BF" }}>
-                    <h4 className="catName">{item.name}</h4>
+        {     
+              category.map((item,ind)=>{
+                return (
+                <div className="bakerProductList">
+                  <div className={catNum%4===0 ? 'bakerAddProduct' : 'bakerAddProductRest'}
+                  key={ind} 
+                  style={{backgroundColor: "#B61919"}} >
+                    <Link to={`/baker/category/${item.categoryname}`} style={{ textDecoration: 'none' }} >
+                      <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem', color:"#FDD2BF" }}>
+                          <h4 className="catName">{item.categoryname}</h4>
+                      </div>
+                      <div className="disHandle">{catNum+=1}</div>
+                    </Link>
+                  </div>   
                 </div>
-                <div className="disHandle">{catNum+=1}</div>
-                </div>   
-              </div>
-              )
-            })
+                )
+              })
         }
-
 
       </div>
 

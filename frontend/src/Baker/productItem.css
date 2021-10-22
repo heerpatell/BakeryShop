@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('/src/img/Baker/Bproduct.png');
+    font-family:"Georgia, 'Times New Roman', Times, serif;"
+}
+.bakeritemmain{
+    margin-left: 15rem;
+    padding-top: 2rem;
+}
+.bakeItemBox{
+    width: 52rem;
+    height: 21rem;
+    background-color: #FF6B6B;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 1.2rem;
+}
+.bakerItemRow{
+    display: flex;
+    justify-content:space-evenly;
+}
+.bakerItemCol{
+    padding: 7px;
+}
+.bakerItemLab{
+    color: #012443;
+    margin-bottom: 0.1rem;
+}
+.bakerItemIn{
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    height: 2.8rem;
+    width: 100%;
+    color: #012443;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;    
+    resize: none;
+}
+.productSaveBtn{
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    color:"#FDD2BF";
+    background-color: #B61919;
+    color: #FDD2BF;
+    margin-top: 1rem;   
+    padding: 0.5rem 1.7rem;
+    border-radius: 5px;
+    border: none;
+}
+.productSaveBtn:hover{
+    background-color: #FDD2BF;
+    color: #B61919;
+}
+.spnBakerProList{
+    color:#B61919;
+    text-transform: uppercase;
+    font-weight: 530;
+    letter-spacing: 0.2rem;
+}
+
+/* Product details */
+.bakerProListTitle{
+    padding-top: 1rem;
+    font-size: 2rem;
+    font-weight: 530;
+    word-spacing: 0.5rem;
+}
+.productListBox{
+    background-color: #012443;
+    height: 19rem;
+    width: 55rem;
+    border-radius: 1.2rem;
+    display:flex;
+    margin-bottom: 3rem;
+}
+.bakerProductImg{
+    width: 19rem;
+    height: 19rem;
+    margin-right: 1.4rem;
+    background-color: #FF6B6B;
+}
+.bakerProductItem{
+    color:#FDD2BF;
+    display: flex;
+    flex-direction: column;
+}
+.bakerDelProduct{
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-left: 33rem;
+    color: #FF6B6B;
+}
+.bakerDelProduct:hover{
+    transform: scale(1.2);
+}
+.bItemRow{
+    display: flex;
+    justify-content:space-around;
+    font-size: 1.4rem;
+}
+.bItemSp{
+    color: #FF6B6B;
+}
+.itemPhotoBaker{
+    width: 17rem;
+    height: 19rem;
+}
+.bakerListInput{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #FDD2BF;
+    color: #FF6B6B;
+}
+.bItemRowEdit{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+}
+.productEditBtn{
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    color:"#FDD2BF";
+    background-color: #FDD2BF;
+    color: #012443;
+    margin-top: 1rem;   
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    border: none;
+}

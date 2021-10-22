@@ -69,7 +69,7 @@ body{
     display: flex;
     justify-content: space-around;
 }
-.proSaveBtn{
+.catSaveBtn{
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color:"#FDD2BF";
@@ -81,7 +81,7 @@ body{
     border: none;
     margin-bottom: 2rem;
 }
-.proSaveBtn:hover{
+.catSaveBtn:hover{
     background-color: #FDD2BF;
     color: #B61919;
 }

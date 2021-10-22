@@ -20,17 +20,16 @@ router.route('/register').post(async(req,res)=>{
     const email = req.body.email;
     const pswd = req.body.pswd;
     const stoken = req.body.stoken;
-    // const scheck = req.body.scheck;
 
     const newUser = new Register({
         name,
         uname,
         email,
         pswd,
-        stoken,
-        // scheck
+        stoken
     })
-    console.log(newUser)
+    // console.log(newUser)
+    
     //pswd hash(middleware)
     
     //toekn generate(middleware)

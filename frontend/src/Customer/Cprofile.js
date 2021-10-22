@@ -6,7 +6,7 @@ import { useHistory } from 'react-router'
 function Cprofile() {
 
     const [inp,setInp] = useState({
-        uname:"",
+        name:"",
         email:"",
         role:"",
         city:"",
@@ -30,18 +30,26 @@ function Cprofile() {
        })
      } 
 
-    //  const custInfo = async () =>{
-    //     await axios.get('http://localhost:5001/profile/get',{
-    //         withCredentials:true
-    //     })
-    //     .then((res)=>{
-    //         console.log(res)
-    //     })
-    //  }
-
+     const custInfo = async () =>{
+        await axios.get('http://localhost:5001/profile/customerget',{
+            withCredentials:true
+        })
+        .then((res)=>{
+            setInp({
+                name:res.data.name,
+                email:res.data.email,
+                role:res.data.role,
+                city:res.data.city,
+                area:res.data.area,
+                cont:res.data.cont
+            })
+            console.log(inp)
+        })
+     }
+    
      useEffect(() => { 
         verifyUser();
-        // custInfo();
+        custInfo();
     }, [])
 
     const handleInp = (e) =>{
@@ -51,33 +59,43 @@ function Cprofile() {
 
     const logOutClicked = () =>{
         console.log("clicked")
-        axios.get("http://localhost:5001/auth/logout")
-        .then(res=>{
-            history.push('/sigin',{
+        try{
+            axios.get("http://localhost:5001/auth/logout",{
+                withCredentials:true
+            })
+            .then(res=>{
+            console.log(res)
+            alert(res.data.message)
+            history.push('/signin',{
                 replace:true
             })
             if(res.status!=200){
+                console.log("error occured in logout",error)       
                 const error = new Error(res.error)
-                throw error       
             }
-        })
-        .catch((e)=>{
+            })
+        }
+        catch(e){
             console.log("error: ",e)
-        })
+        }
     }
+
 
     const handleSub =(e)=>{
         e.preventDefault()
-        // const profileData = {
-        //     bname:inp.bname,
-        //     city:inp.city,
-        //     area:inp.area,
-        // }
-        // axios.post("http://localhost:5001/profile/postdata",profileData)
-        // .then(res=>{
-        //     console.log(res)
-        //     alert(res.data.message)
-        // })
+        const profileData = {
+            cont:inp.cont,
+            city:inp.city,
+            area:inp.area
+        }
+        console.log("p",profileData)
+        axios.post("http://localhost:5001/profile/customerpost",profileData,{
+            withCredentials:true
+        })
+        .then(res=>{
+            console.log(res)
+            alert(res.data.message)
+        })
     }
 
     const [showNav,setShowNav]= useState(true)
@@ -107,11 +125,11 @@ function Cprofile() {
                         />
                     </div>   
                     <div className="proCol">
-                        <label className="proLab">User Name*</label><br/>
+                        <label className="proLab">Name*</label><br/>
                         <input type="text"
                         className="proIn"
                         name="uname"
-                        value={inp.uname}
+                        value={inp.name}
                         onChange={handleInp}
                         />
                     </div>

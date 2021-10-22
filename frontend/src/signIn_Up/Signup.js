@@ -20,8 +20,7 @@ function Signup() {
             uname:user.uname,
             email:user.email,
             pswd:user.pswd,
-            stoken:user.stoken,
-            scheck:user.scheck
+            stoken:user.stoken
         }
         axios.post('http://localhost:5001/auth/register',newContact)
         .then(res=>{

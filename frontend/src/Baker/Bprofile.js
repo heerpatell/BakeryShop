@@ -35,8 +35,30 @@ function Bprofile() {
        })
      } 
 
+     const bakerInfo = async () =>{
+        await axios.get('http://localhost:5001/profile/bakerget',{
+            withCredentials:true
+        })
+        .then((res)=>{
+            setInp({
+                bname:res.data.bname,
+                uname:res.data.uname,
+                email:res.data.email,
+                role:res.data.role,
+                city:res.data.city,
+                sellProduct:res.data.sellProduct,
+                availTime:res.data.availTime,
+                area:res.data.area,
+                cont:res.data.cont,
+                socialmedia:res.data.socialmedia
+            })
+            console.log(inp)
+        })
+     }
+
     useEffect(() => {
         verifyUser();
+        bakerInfo();
     }, [])
 
 
@@ -64,31 +86,26 @@ function Bprofile() {
 
     const handleSub =(e)=>{
         e.preventDefault()
-        console.log("her")
         const profileData = {
-            bname:inp.bname,
-            uname:inp.uname,
-            sellProduct:inp.sellProduct,
-            availTime:inp.availTime,
-            email:inp.email,
-            role:inp.role,
+            cont:inp.cont,
             city:inp.city,
             area:inp.area,
-            cont:inp.cont,
-            socialmedia:inp.socialmedia
+            bname:inp.bname,
+            uname:inp.uname,
+            socialmedia:inp.socialmedia,
+            availTime:inp.availTime,
+            sellProduct:inp.sellProduct
         }
-        axios.post("http://localhost:5001/baker/profile/add",profileData)
+        console.log("p",profileData)
+        axios.post("http://localhost:5001/profile/bakerpost",profileData,{
+            withCredentials:true
+        })
         .then(res=>{
             console.log(res)
-            if(res.data.error){
-                alert(res.data.error)
-            }
-            if(res.data.message==="Updated succesfully"){
-                alert(res.data.message)
-            }
+            alert(res.data.message)
         })
     }
-    
+
     const [showNav,setShowNav] = useState(true);
     return (
     <>
@@ -211,7 +228,7 @@ function Bprofile() {
             </div>
 
             <div className="proBtnRow"> 
-                <button className="proSaveBtn" onClick={handleSub}>Save</button>
+                <button className="catSaveBtn" onClick={handleSub}>Save</button>
             </div>
         </form>
     </div>

@@ -5,7 +5,8 @@ const signUpVal=(data)=>{
         name:joi.string().min(2).required(),
         uname:joi.string().min(3).required(),
         email:joi.string().required().email(),
-        pswd:joi.string().min(5).required()
+        pswd:joi.string().min(5).required(),
+        stoken:joi.string().min(1)
     })
     return schema.validate(data)
 }

@@ -30,6 +30,7 @@ function AdminContact() {
         const response = await fetch('http://localhost:5001/contactapi/get');
             
         setContact(await response.json())
+        console.log(contact)
     }
     
     useEffect(() => {
