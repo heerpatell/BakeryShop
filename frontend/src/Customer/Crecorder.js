@@ -10,6 +10,8 @@ function Crecorder() {
     const [fetchData,setFetchData] = useState([])
     var [quantity,setQuantity] =useState([])
     const [totalPrice,setTotalPrice] = useState(0)
+    const [orderData,setOrderData] = useState([])
+    const [cartDetails,setCartDetails] = useState([])
 
     let history = useHistory()
 
@@ -35,7 +37,7 @@ function Crecorder() {
          .then((res)=>{
             const cartData = res.data.item[0].cartItems;      
             setFetchData(cartData)
-            console.log("res",fetchData)
+            // console.log("res",fetchData)
         })
         .catch((e)=>{
             console.log("error",e)
@@ -52,10 +54,27 @@ function Crecorder() {
         })
      }
 
+     const getOrderData = () =>{
+        const res = axios.get("http://localhost:5001/order/getorderlist",{
+            withCredentials:true
+        })
+        .then(async(res)=>{
+
+            const data = res.data.cartDetails
+            console.log("data",res.data)
+            await setOrderData(data)
+            
+            console.log("od",orderData)
+            await setCartDetails(res.data.cartDetails)
+            // console.log("c",cartDetails)
+        })
+     }
+
      useEffect(() => {
         verifyUser();
         getCartDetails()
         getTotalVal()
+        getOrderData()
     }, [])
     
     const addClicked =async (id,quantity) => {
@@ -106,6 +125,27 @@ function Crecorder() {
         })
     }
 
+    const placeOrder =async () => {
+        const order = {
+            id:"123"
+        }
+        await axios.post("http://localhost:5001/order/postorder",order,{
+            withCredentials:true
+        })
+        .then((res)=>{
+            if(res.data.msg === "posted"){
+                alert("Ordered Succesfully")
+            }
+            if(res.data.message === "Order Pending"){
+                alert("Your order is still pending, Try ordering once they are done")
+            }
+        })
+        .catch((e)=>{
+            console.log("error",e)
+        })
+
+    }
+
     return (
     <>
     <div>
@@ -115,7 +155,6 @@ function Crecorder() {
                 {(fetchData.length=== 0) && (<div>Select something from product list !!</div>)}
                 {
                     fetchData.map((item,ind)=>{
-                        console.log("q",fetchData);
                         return(
                         <div className="custHeadMainBox">
                             <div className="custCartFirstRow">
@@ -154,9 +193,84 @@ function Crecorder() {
                 <div className="cartTotalPriceRow">
                     <div className="cartTotal">Cart Total: <span className="catTotalVal">{totalPrice}</span> </div>
                 </div>
+                {/* {console.log("cartObj",cartDetails.ostatus)} */}
+
+
+                {
+                    // orderData.map((item,ind)=>{
+                    //     console.log("index",ind)
+                    // })
+                    // (orderData.ostatus === "done")?
+                    <div className="cPOrder">
+                        <div className="cPlaceOrder" onClick={placeOrder}>Place Order</div>
+                    </div>
+                    // :<div className="cPOrder">
+                    //     <div className="cDisableOrder" onClick={placeOrder}>Place Order</div>
+                    // </div>
+                }
+
             <div className="custHeadMain">Your order List</div>
-        
-        
+            {(orderData.length === 0 && <div>You haven't made any purchase yet!!</div>)}
+
+            {(orderData.length !==0 &&
+                orderData.map((item,ind)=>{
+                    console.log("item ind",ind,"iii",item.ostatus)
+                    return(
+                        item.ostatus === 'pending' ?
+                        <div className="orderListBox">
+                        <div className="cOrderListRowHeading">
+                            <div>
+                                Name
+                            </div>
+                            <div>
+                                Quantity
+                            </div>
+                            <div>
+                                Price
+                            </div>
+                        </div>
+                        <hr className="lineBetweenOrder" color="#00ff00"/>
+                        
+                        {
+                            item.cartItems.map((item,ind)=>{
+                                return(
+                                <div>
+                                    <div className="cOrderListRow">
+                                        <div>
+                                            {item.iname}
+                                        </div>
+                                        <div>
+                                            {item.quantity}
+                                        </div>
+                                        <div>
+                                            {item.price}
+                                        </div>
+                                    </div>
+                                    <hr className="lineBetweenOrder" color="#00ff00"/>
+                                </div>    
+                                );
+                            })
+                        }
+    
+                        <div className="cTotalCostOrderList">
+                        <div className="cOrderListCost"> Total Amount :</div>
+                        <div className="cOrderListCostDetail">{item.totalPrice}</div>
+                        </div>
+                        <hr className="lineBetweenOrder" color="#00ff00"/>
+    
+                        <div className="cOrderListLastRow">
+                            <div className="cOrderStatus">Status :
+                                <span className="cOrderStatusDetail">
+                                {item.ostatus}
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    :<div >Looks like you have not ordered recently!</div> 
+                    )
+                })
+            )}
         </div>
     </div>
     </>

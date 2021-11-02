@@ -9,6 +9,7 @@ const adminroute = require('./routes/adminRoute')
 const profileroute = require("./routes/profileRoute")
 const productroute = require("./routes/productRoute")
 const cartroute = require("./routes/cartRoute")
+const orderRoute = require("./routes/orderRoute")
 
 const app = express()
 app.use(express.urlencoded({extended:false}))
@@ -33,6 +34,7 @@ app.use("/auth",signuproute)    //signup route
 app.use("/profile",profileroute)    //profile section
 app.use("/product",productroute)    //product route
 app.use("/cart",cartroute)  //cart route
+app.use("/order",orderRoute)
 
 app.get('/hi',(req,res)=>{
     res.cookie("ok","success",{maxAge:20000})

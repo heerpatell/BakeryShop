@@ -19,6 +19,7 @@ router.route('/add').post(async(req,res)=>{
  
                 // const cartId = Cart.findById({_id:decodedToken._id})
 
+                // console.log("did",decodedToken._id)
                 Cart.findOne({userId:decodedToken._id})
                 .exec(async (error,user)=>{
                     

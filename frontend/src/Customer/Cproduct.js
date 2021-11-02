@@ -5,12 +5,12 @@ import axios from 'axios'
 import { useHistory } from 'react-router'
 import {FaCartPlus} from 'react-icons/fa'
 import {RiShoppingCart2Line} from 'react-icons/ri'
+import {FiPhoneCall} from 'react-icons/fi'
 
 function Cproduct() {
     const [showNav,setShowNav]= useState(true)
     const [fetchData,setFetchData] = useState([])
     const [add,setAdd] = useState(0)
-    const [cartAppear,setCartAppear] = useState([true])
 
     const history = useHistory()
     const verifyUser = async () =>{
@@ -69,7 +69,7 @@ function Cproduct() {
            .catch((e)=>{
                console.log("error",e)
            })
-           setCartAppear(false)
+
            alert("Item Added!!")
         }catch(e){
             console.log(e)
@@ -77,6 +77,11 @@ function Cproduct() {
         setAdd(add+1)
     }
 
+    const contactDetails = () =>{
+        alert("contact of baker is: 12344\nemail is: bansari@gmail.com")
+    }
+
+    var ok;
     return (
     <>
     <div>
@@ -84,6 +89,7 @@ function Cproduct() {
         <div className="cProductMain">
             <div className="CustProductHeading">
                 <div className="bakerProListTitle">Product List </div>
+                <div className="custProductContact"><FiPhoneCall size={27} color={"#012443"} onClick={contactDetails}/></div>
                 <div className="bakerProductCart"><RiShoppingCart2Line size={27} color={"#012443"}/><span className="CustAddItem">{add}</span></div>
             </div>
 
@@ -94,15 +100,10 @@ function Cproduct() {
                        <div className="cProductBox">
                             <div className="cItemContent">
                                 <div><img className="cItemImage" src={require(`../uploads/${item.iphoto}`).default} alt="img"/></div>
+                                
                                 {
-
-                                    cartAppear ?
                                     <div className="cAddToCart">
-                                        <FaCartPlus size={23} color="#FDD2BF" onClick={(id)=>addCart(item._id)}/>
-                                    </div>
-                                    :
-                                    <div className="cAddToCartDisable">
-                                        <FaCartPlus size={23} color="grey" onClick={(id)=>addCart(item._id)}/>
+                                        <FaCartPlus size={23} color="#FDD2BF" onClick={(id)=>addCart(item._id)} />
                                     </div>
                                 }
 

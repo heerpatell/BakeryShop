@@ -37,7 +37,6 @@ function SidebarCustomer({show}) {
     <>
     <div className={show ? 'sideNav active' : 'sideNav'}>
     <ul className="baker-list"> 
-        <li className="baker-list-item"><Link to="/customer" className="baker-list-link"><FaHome/> Home</Link></li>
         <li className="baker-list-item"><Link to="/customer/profile" className="baker-list-link"><CgProfile/> Profile</Link></li>
         <li className="baker-list-item"><Link to="/customer/product" className="baker-list-link"><GiCakeSlice/>  Product</Link></li>
         <li className="baker-list-item"><Link to="/customer/recentorder" className="baker-list-link"><BiReceipt/>Recent Order</Link></li>

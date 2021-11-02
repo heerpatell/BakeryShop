@@ -5,14 +5,12 @@ import Contact from './HomePage/Contact/Contact'
 import SignIn from './signIn_Up/SignIn'
 import SignUp from './signIn_Up/Signup'
 import About from './HomePage/AboutUs/About'
-import Bhome from './Baker/Bhome'
 import ProductCat from './Baker/ProductCategory'
 import ProductItem from './Baker/ProductItem'
 import AdminContact from './Admin/AdminContact'
 import Bprofile from './Baker/Bprofile'
 import OrderHis from './Baker/OrderHis';
 import ReceOrder from './Baker/ReceOrder';
-import Chome from './Customer/Chome';
 import Cordhistory from './Customer/Cordhistory';
 import Cproduct from './Customer/Cproduct';
 import Cprofile from './Customer/Cprofile';
@@ -33,12 +31,10 @@ function App() {
         <Route excat path="/baker/product" component={ProductCat}></Route>
         <Route excat path="/baker/recentorder" component={ReceOrder}></Route>
         <Route excat path="/baker/orderhistory" component={OrderHis}></Route>
-        <Route excat path="/baker" component={Bhome}></Route>
         <Route excat path="/customer/profile" component={Cprofile}></Route>
         <Route excat path="/customer/product" component={Cproduct}></Route>
         <Route excat path="/customer/recentorder" component={Crecorder}></Route>
         <Route excat path="/customer/orderhistory" component={Cordhistory}></Route>
-        <Route excat path="/customer" component={Chome}></Route>
         <Route path="/adminbakercontact" component={AbakerCon}></Route>
         <Route path="/admincustomercontact" component={Acustomercon}></Route>
         <Route path="/admincontact" component={AdminContact}></Route>

@@ -29,11 +29,10 @@ function SignIn() {
             try{
                 if(res.data.message==='Login succesfully'){
                     alert(res.data.message)
-                    // console.log("inside")
                     if(res.data.userToken==='Customer'){
-                        history.push('/customer')
+                        history.push('/customer/product')
                     }else if(res.data.userToken==="Baker"){
-                        history.push('/baker')
+                        history.push('/baker/product')
                     }else if(res.data.userToken==="Admin"){
                         history.push('/adminbakercontact')
                     }

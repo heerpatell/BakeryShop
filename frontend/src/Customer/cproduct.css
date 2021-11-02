@@ -18,6 +18,11 @@
     margin-top: 2rem;
     margin-right: 2rem;
 }
+.custProductContact{
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-left: 44rem;
+}
 .cProRow{
     display: flex;
     flex-wrap: wrap;
@@ -84,4 +89,7 @@
 }
 .cItemSpanLast{
     color: #B61919;
+}
+.cDisabledColor{
+    color:grey
 }
