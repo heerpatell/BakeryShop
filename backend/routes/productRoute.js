@@ -87,6 +87,19 @@ router.route("/addcategory").post(async(req,res)=>{
     }
 })
 
+router.route("/deletecategory/:name").delete(async(req,res)=>{  
+    const name = req.params.name
+    await Category.findOneAndDelete({categoryname:name}).exec()
+    .then(()=>{
+        res.status(201).send({message:"ok"})
+    })
+    .catch((e)=>{
+        console.log("error",e)
+    })
+
+    await Product.findOneAndDelete({cname:name}).exec()
+})
+
 //product add
 router.route("/add").post(upload.single("iphoto"),async(req,res)=>{
     const token = req.cookies.jwt

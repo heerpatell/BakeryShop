@@ -104,13 +104,10 @@ function Cprofile() {
         <SidebarCustomer show={showNav}/>   
 
         <div className="bprofile">
-            <div className="bphoto">
-                photo
-            </div>
+            <div className="logOutRow">
+                <button className="logOutBtn" onClick={logOutClicked}>Log out</button>
+            </div>    
 
-            <button className="logoutbtn" onClick={logOutClicked}>Log out </button>
-            
-            <br/><br/>  
             <h3 className="proDet">Profile Details</h3>
             
             <form method="post" action="/baker/profile">

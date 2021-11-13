@@ -104,9 +104,19 @@ router.route('/bakerorders').get(async(req,res)=>{
             }else{
                 try{
                     const orderData = await Order.find().exec()
-                    console.log(orderData)
+                    console.log(orderData[0].userId)
+
+                    const userName = await Register.find({_id:orderData[0].userId}).exec()
+                    // console.log("uname",userName[0].name)
+                    // console.log("uname",userName[0].cont)
+
+                    const uname = userName[0].name
+                    const ucont = userName[0].cont 
+                    // orderData.uname = userName[0].name
+                    // orderData.ucont= userName[0].cont
                     
-                    res.send({orderData})                    
+                    console.log(orderData)
+                    res.send({orderData,uname,ucont})                    
                 }catch(e){
                     console.log("error",e)
                 }

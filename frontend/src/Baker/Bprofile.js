@@ -69,19 +69,25 @@ function Bprofile() {
 
     const logOutClicked = () =>{
         console.log("clicked")
-        axios.get("http://localhost:5001/auth/logout")
-        .then(res=>{
-            history.push('/sigin',{
+        try{
+            axios.get("http://localhost:5001/auth/logout",{
+                withCredentials:true
+            })
+            .then(res=>{
+            console.log(res)
+            alert(res.data.message)
+            history.push('/signin',{
                 replace:true
             })
             if(res.status!=200){
+                console.log("error occured in logout",error)       
                 const error = new Error(res.error)
-                throw error       
             }
-        })
-        .catch((e)=>{
+            })
+        }
+        catch(e){
             console.log("error: ",e)
-        })
+        }
     }
 
     const handleSub =(e)=>{
@@ -106,19 +112,20 @@ function Bprofile() {
         })
     }
 
+    const handlePhoto = (e) => {
+        setInp({...inp, iphoto: e.target.files[0]});
+    }
+
     const [showNav,setShowNav] = useState(true);
     return (
     <>
     <Sidebar  show={showNav}/>   
 
     <div className="bprofile">
-        <div className="bphoto">
-            photo
-        </div>
 
-        <button className="logoutbtn" onClick={logOutClicked}>Log out </button>
-        
-        <br/><br/>  
+        <div className="logOutRow">
+            <button className="logOutBtn" onClick={logOutClicked}>Log out</button>
+        </div>    
         <h3 className="proDet">Profile Details</h3>
         
         <form method="post" action="/baker/profile">

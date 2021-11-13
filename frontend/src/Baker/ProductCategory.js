@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router'
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import {MdDelete} from 'react-icons/md'
 
 const styles = (theme) => ({
     root: {
@@ -106,6 +107,21 @@ function Product() {
       }
     }
 
+    const deleteCategory = async (catName) =>{
+        // console.log(catName)
+        await axios.delete(`http://localhost:5001/product/deletecategory/${catName}`,{
+          withCredentials:true
+        })
+        .then((res)=>{
+          if(res.data.message="ok"){
+            alert(`${catName} is deleted!`)
+          }
+        })
+        .catch((e)=>{
+          console.log("error",e)
+        })
+    }
+
     const history = useHistory()
     const verifyUser = async () =>{
         axios.get('http://localhost:5001/auth/verify',{
@@ -194,6 +210,7 @@ function Product() {
                   <div className={catNum%4===0 ? 'bakerAddProduct' : 'bakerAddProductRest'}
                   key={ind} 
                   style={{backgroundColor: "#B61919"}} >
+                    <div><MdDelete size={30} className="catDelIcon" onClick={()=>deleteCategory(item.categoryname)}/></div>
                     <Link to={`/baker/category/${item.categoryname}`} style={{ textDecoration: 'none' }} >
                       <div style={{textAlign:"center" , fontSize:'2rem' ,marginTop:'5rem', color:"#FDD2BF" }}>
                           <h4 className="catName">{item.categoryname}</h4>

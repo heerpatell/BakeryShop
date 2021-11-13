@@ -78,7 +78,7 @@ function Cproduct() {
     }
 
     const contactDetails = () =>{
-        alert("contact of baker is: 12344\nemail is: bansari@gmail.com")
+        alert("contact of baker is: 9876543211\nemail is: bansari@gmail.com")
     }
 
     var ok;

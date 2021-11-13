@@ -9,6 +9,8 @@ function ReceOrder() {
     const [fetch,setFetch] = useState([])
     const [cartItem,setCartItem] = useState([])
 
+    var uname=''
+    var ucont=''
     const history = useHistory()
     const verifyUser = async () =>{
         const response = axios.get('http://localhost:5001/auth/verify',{
@@ -32,7 +34,12 @@ function ReceOrder() {
         .then(async(res)=>{
             try{
                 const resp = await res.data.orderData
-                // console.log(res.data.orderData)
+                uname = await res.data.uname
+                ucont = await res.data.ucont
+
+                console.log("uname_ucont",uname,ucont)
+
+                console.log(res.data.orderData)
                 console.log("d",resp)
                 setFetch(resp)
                 // setCartItem(resp[0].cartItems)
@@ -77,6 +84,7 @@ function ReceOrder() {
         <Sidebar  show={showNav}/>  
         <div className="rOrderHead"><h3>Recent Orders</h3></div>  
 
+        {console.log("uname",uname)}
         <div className="recOrdList">
             {
                 fetch.map((item,ind)=>{
@@ -84,7 +92,8 @@ function ReceOrder() {
                         item.ostatus === 'pending'?
                             <div className="recOrdBox">
                                 <div className="recOrdName">Order Id: <span className="recOrdVal">{item._id}</span></div>
-                                <div className="recOrdName">Customer Id: <span className="recOrdVal">{item.userId}</span></div>
+                                <div className="recOrdName">Customer Id: <span className="recOrdVal">Mania</span></div>
+                                <div className="recOrdName">Customer Contact: <span className="recOrdVal">9998887777</span></div>
 
                                 <hr className="lineBetweenOrder" color="#00ff00"/>
                                 <div className="rowHeadingBaker">
